@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.mobile.pocketrivals.components.BottomNavBarScreen
+import com.mobile.pocketrivals.components.bottomNavBar.BottomNavBarScreenType
 import com.mobile.pocketrivals.screens.HeroesScreen
 import com.mobile.pocketrivals.screens.HomeScreen
 import com.mobile.pocketrivals.screens.ProfileScreen
@@ -13,15 +13,15 @@ import com.mobile.pocketrivals.screens.ProfileScreen
 fun BottomNavGraph(navController: NavHostController) {
     NavHost (
         navController = navController,
-        startDestination = BottomNavBarScreen.Home.route
+        startDestination = BottomNavBarScreenType.Home.route
     ) {
-        composable(route = BottomNavBarScreen.Home.route) {
+        composable(route = BottomNavBarScreenType.Home.route) {
             HomeScreen()
         }
-        composable(route = BottomNavBarScreen.Heroes.route) {
+        composable(route = BottomNavBarScreenType.Heroes.route) {
             HeroesScreen()
         }
-        composable(route = BottomNavBarScreen.Profile.route) {
+        composable(route = BottomNavBarScreenType.Profile.route) {
             ProfileScreen()
         }
     }
