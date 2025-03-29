@@ -1,14 +1,18 @@
 package com.mobile.pocketrivals.components
 
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.SearchBar
+import androidx.compose.material3.SearchBarDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -29,7 +33,13 @@ fun HeroSearchBar(
     SearchBar(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(8.dp),
+            .padding(8.dp)
+            .border(
+                width = 2.dp,
+                color = MaterialTheme.colorScheme.tertiary,
+                shape = RoundedCornerShape(8.dp)
+            )
+        ,
         query = text,
         onQueryChange = onTextChange,
         onSearch = { active = false },
@@ -56,7 +66,11 @@ fun HeroSearchBar(
                     contentDescription = "Close Icon"
                 )
             }
-        }
+        },
+        colors = SearchBarDefaults.colors(
+            containerColor = MaterialTheme.colorScheme.primary,
+            dividerColor = MaterialTheme.colorScheme.tertiary,
+        )
     ) {
     }
 }
