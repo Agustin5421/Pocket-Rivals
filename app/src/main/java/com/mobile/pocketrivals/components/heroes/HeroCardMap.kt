@@ -1,4 +1,4 @@
-package com.mobile.pocketrivals.components
+package com.mobile.pocketrivals.components.heroes
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.grid.GridCells

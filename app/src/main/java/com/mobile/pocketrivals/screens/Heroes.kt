@@ -12,8 +12,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
-import com.mobile.pocketrivals.components.HeroCardMap
-import com.mobile.pocketrivals.components.HeroSearchBar
+import com.mobile.pocketrivals.components.heroes.HeroCardMap
+import com.mobile.pocketrivals.components.heroes.HeroSearchBar
 import com.mobile.pocketrivals.mocks.mockHeroes
 
 @OptIn(ExperimentalMaterial3Api::class)

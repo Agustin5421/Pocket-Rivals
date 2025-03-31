@@ -11,7 +11,7 @@ import com.mobile.pocketrivals.mocks.Hero
 import com.mobile.pocketrivals.mocks.mockHeroes
 
 @Composable
-fun HeroScreen(heroId: String?) {
+fun HeroDetailScreen(heroId: String?) {
     val hero = getHeroById(heroId)
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         Text(text = "Hero's name is: " + hero.name, color = Color.Black)

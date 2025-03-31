@@ -7,7 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.mobile.pocketrivals.components.bottomNavBar.BottomBarItem
-import com.mobile.pocketrivals.screens.HeroScreen
+import com.mobile.pocketrivals.screens.HeroDetailScreen
 import com.mobile.pocketrivals.screens.HeroesScreen
 import com.mobile.pocketrivals.screens.HomeScreen
 import com.mobile.pocketrivals.screens.ProfileScreen
@@ -31,7 +31,7 @@ fun NavHostComposable(navController: NavHostController) {
             arguments = listOf(navArgument("heroId") { type = NavType.StringType })
         ) { backStackEntry ->
             val heroId = backStackEntry.arguments?.getString("heroId")
-            HeroScreen(heroId = heroId)
+            HeroDetailScreen(heroId = heroId)
         }
 
     }
