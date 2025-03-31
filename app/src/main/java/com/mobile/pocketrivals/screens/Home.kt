@@ -1,16 +1,44 @@
 package com.mobile.pocketrivals.screens
 
-import androidx.compose.foundation.layout.Box
+import android.os.Build
+import androidx.annotation.RequiresApi
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.Text
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
+import com.mobile.pocketrivals.components.home.HeroTierList
+import com.mobile.pocketrivals.components.home.PatchNotesCard
+import com.mobile.pocketrivals.components.home.TopBar
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun HomeScreen() {
-    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-        Text(text = "Home Screen", color = Color.Black)
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize(),
+        verticalArrangement = Arrangement.Top,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+
+        TopBar()
+
+
+        PatchNotesCard(modifier = Modifier
+            .padding(top = 8.dp)
+            .padding(horizontal = 2.dp)
+
+        )
+
+        HeroTierList(modifier = Modifier
+            .padding(top = 8.dp)
+        )
+
     }
+
+
 }
