@@ -10,13 +10,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.mobile.pocketrivals.components.home.HeroTierList
 import com.mobile.pocketrivals.components.home.PatchNotesCard
 import com.mobile.pocketrivals.components.home.TopBar
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
-fun HomeScreen() {
+fun HomeScreen(navController: NavController) {
 
     Column(
         modifier = Modifier
@@ -25,7 +26,7 @@ fun HomeScreen() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
-        TopBar()
+        TopBar(navController = navController)
 
 
         PatchNotesCard(modifier = Modifier
