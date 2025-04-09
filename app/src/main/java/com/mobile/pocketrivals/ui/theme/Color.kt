@@ -11,3 +11,4 @@ val Grey10 =  Color(0xFFF6F6F6)
 
 val Gold = Color(0xFFF5BE59)
 val LightBlue = Color(0xFFb7cbdb)
+val SearchBarGray = Color(0xFFB0B0B0)
