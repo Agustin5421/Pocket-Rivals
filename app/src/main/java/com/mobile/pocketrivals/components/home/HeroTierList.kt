@@ -16,6 +16,8 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import com.mobile.pocketrivals.R
 
+
+//TODO: fetch from DB
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun HeroTierList(modifier: Modifier = Modifier) {
