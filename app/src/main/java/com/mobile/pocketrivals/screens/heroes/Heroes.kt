@@ -1,9 +1,9 @@
-package com.mobile.pocketrivals.screens
+package com.mobile.pocketrivals.screens.heroes
 
+import com.mobile.pocketrivals.components.heroes.HeroSearchBar
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -13,10 +13,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import com.mobile.pocketrivals.components.heroes.HeroCardMap
-import com.mobile.pocketrivals.components.heroes.HeroSearchBar
 import com.mobile.pocketrivals.mocks.mockHeroes
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HeroesScreen(navController: NavController) {
     var searchText by remember { mutableStateOf("") }

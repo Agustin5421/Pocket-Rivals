@@ -1,4 +1,4 @@
-package com.mobile.pocketrivals.screens
+package com.mobile.pocketrivals.screens.home
 
 import android.os.Build
 import androidx.annotation.RequiresApi

@@ -78,7 +78,7 @@ fun HeroTierListHeader(modifier: Modifier = Modifier) {
     }
 }
 
-@Preview()
+@Preview
 @Composable
 fun PreviewChampionStatsHeader() {
     Column {

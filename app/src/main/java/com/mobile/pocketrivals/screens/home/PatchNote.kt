@@ -1,4 +1,4 @@
-package com.mobile.pocketrivals.screens
+package com.mobile.pocketrivals.screens.home
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable

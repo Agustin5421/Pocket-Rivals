@@ -9,11 +9,11 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.mobile.pocketrivals.components.bottomNavBar.BottomBarItem
-import com.mobile.pocketrivals.screens.HeroDetailScreen
-import com.mobile.pocketrivals.screens.HeroesScreen
-import com.mobile.pocketrivals.screens.HomeScreen
+import com.mobile.pocketrivals.screens.heroes.HeroDetailScreen
+import com.mobile.pocketrivals.screens.heroes.HeroesScreen
+import com.mobile.pocketrivals.screens.home.HomeScreen
 import com.mobile.pocketrivals.screens.ProfileScreen
-import com.mobile.pocketrivals.screens.SettingsScreen
+import com.mobile.pocketrivals.screens.home.SettingsScreen
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable

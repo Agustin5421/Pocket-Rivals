@@ -1,4 +1,4 @@
-package com.mobile.pocketrivals.screens
+package com.mobile.pocketrivals.screens.heroes
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
