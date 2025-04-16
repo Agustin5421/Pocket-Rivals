@@ -14,6 +14,7 @@ import androidx.navigation.NavController
 import com.mobile.pocketrivals.components.home.HeroTierList
 import com.mobile.pocketrivals.components.home.PatchNotesCard
 import com.mobile.pocketrivals.components.home.TopBar
+import com.mobile.pocketrivals.mocks.heroStats
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
@@ -35,8 +36,10 @@ fun HomeScreen(navController: NavController) {
 
         )
 
+        val heroStats = heroStats
+        //TODO: fetch from DB Hero Stats
         HeroTierList(modifier = Modifier
-            .padding(top = 8.dp)
+            .padding(top = 8.dp), heroStats
         )
 
     }

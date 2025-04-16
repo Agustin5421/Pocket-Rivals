@@ -1,11 +1,46 @@
 package com.mobile.pocketrivals.mocks
 
 import com.mobile.pocketrivals.R
+import com.mobile.pocketrivals.components.home.HeroStats
 
 data class Heroes(
     val heroes: List<Hero>
 )
 val heroImage = R.drawable.mock_hero_image
+
+val heroStats =
+    listOf(
+        HeroStats(
+            rank = 1,
+            championName = "Adam Warlock",
+            championIconResId = R.drawable.mock_hero_image,
+            roleIconResId = R.drawable.dps_image,
+            winRate = "54.31%",
+            pickRate = "10.69%",
+            banRate = "43.09%"
+        ),
+        HeroStats(
+            rank = 1,
+            championName = "Adam Warlock",
+            championIconResId = R.drawable.mock_hero_image,
+            roleIconResId = R.drawable.dps_image,
+            winRate = "54.31%",
+            pickRate = "10.69%",
+            banRate = "43.09%"
+        ),
+        HeroStats(
+            rank = 1,
+            championName = "Adam Warlock",
+            championIconResId = R.drawable.mock_hero_image,
+            roleIconResId = R.drawable.dps_image,
+            winRate = "54.31%",
+            pickRate = "10.69%",
+            banRate = "43.09%"
+        )
+
+    )
+
+
 val mockHeroes = Heroes(
     heroes = listOf(
         Hero(

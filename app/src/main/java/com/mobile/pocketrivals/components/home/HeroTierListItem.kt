@@ -18,7 +18,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.mobile.pocketrivals.R
 
-
+//TODO: on fetching the data from the API 
+//TODO: I should create these entities and save them in the DB
 data class HeroStats(
     val rank: Int,
     val championName: String,
@@ -31,7 +32,7 @@ data class HeroStats(
 
 
 @Composable
-fun HeroStatsRow(stats: HeroStats, modifier: Modifier = Modifier) {
+fun HeroTierListItem(stats: HeroStats, modifier: Modifier = Modifier) {
     Row(
         modifier = modifier
             .fillMaxWidth()
@@ -117,5 +118,5 @@ fun PreviewChampionStatsRow() {
         pickRate = "10.69%",
         banRate = "43.09%"
     )
-    HeroStatsRow(stats = sampleStats)
+    HeroTierListItem(stats = sampleStats)
 }

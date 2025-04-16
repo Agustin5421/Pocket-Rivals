@@ -15,7 +15,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.mobile.pocketrivals.R
 
 @Composable
 fun HeroTierListHeader(modifier: Modifier = Modifier) {
@@ -83,27 +82,6 @@ fun HeroTierListHeader(modifier: Modifier = Modifier) {
 fun PreviewChampionStatsHeader() {
     Column {
         HeroTierListHeader()
-        val sampleStats = HeroStats(
-            rank = 1,
-            championName = "Moon Knight",
-            championIconResId = R.drawable.mock_hero_image,
-            roleIconResId = R.drawable.dps_image,
-            winRate = "54.31%",
-            pickRate = "10.69%",
-            banRate = "43.09%"
-        )
-        HeroStatsRow(stats = sampleStats)
-
-        val sampleStats2 = HeroStats(
-            rank = 1,
-            championName = "Adam Warlock",
-            championIconResId = R.drawable.mock_hero_image,
-            roleIconResId = R.drawable.dps_image,
-            winRate = "54.31%",
-            pickRate = "10.69%",
-            banRate = "43.09%"
-        )
-        HeroStatsRow(stats = sampleStats2)
     }
 
 }

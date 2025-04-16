@@ -1,6 +1,5 @@
 package com.mobile.pocketrivals.screens.heroes
 
-import com.mobile.pocketrivals.components.heroes.HeroSearchBar
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -13,7 +12,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import com.mobile.pocketrivals.components.heroes.HeroCardMap
-import com.mobile.pocketrivals.mocks.mockHeroes
+import com.mobile.pocketrivals.components.heroes.HeroSearchBar
 
 @Composable
 fun HeroesScreen(navController: NavController) {
