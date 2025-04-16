@@ -38,4 +38,8 @@ class HeroesViewModel @Inject constructor() : ViewModel(){
             abilities = TODO()
         )
     }
+
+    fun getHeroes() : List<Hero> {
+        return mockHeroes.heroes
+    }
 }

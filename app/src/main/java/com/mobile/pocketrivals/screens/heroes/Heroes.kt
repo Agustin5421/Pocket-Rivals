@@ -18,7 +18,8 @@ import com.mobile.pocketrivals.mocks.mockHeroes
 @Composable
 fun HeroesScreen(navController: NavController) {
     var searchText by remember { mutableStateOf("") }
-    val originalHeroes = mockHeroes.heroes
+    val heroesViewModel = HeroesViewModel()
+    val originalHeroes = heroesViewModel.getHeroes()
 
     val filteredHeroes = remember(searchText) {
         if (searchText.isEmpty()) {
