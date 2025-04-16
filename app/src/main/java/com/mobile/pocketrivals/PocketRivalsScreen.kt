@@ -6,5 +6,6 @@ enum class PocketRivalsScreen{
     Profile,
 
     HeroDetail,
-    Settings
+    Settings,
+    PatchNote
 }

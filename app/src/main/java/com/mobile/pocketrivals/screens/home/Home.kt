@@ -15,6 +15,7 @@ import com.mobile.pocketrivals.components.home.HeroTierList
 import com.mobile.pocketrivals.components.home.PatchNotesCard
 import com.mobile.pocketrivals.components.home.TopBar
 import com.mobile.pocketrivals.mocks.heroStats
+import com.mobile.pocketrivals.mocks.mockNews
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
@@ -30,10 +31,13 @@ fun HomeScreen(navController: NavController) {
         TopBar(navController = navController)
 
 
+
+        val news = mockNews
         PatchNotesCard(modifier = Modifier
             .padding(top = 8.dp)
-            .padding(horizontal = 2.dp)
-
+            .padding(horizontal = 2.dp),
+            patchNote = news,
+            navController = navController
         )
 
         val heroStats = heroStats
