@@ -1,38 +1,122 @@
 package com.mobile.pocketrivals.mocks
 
+import com.google.gson.annotations.SerializedName
+
 data class Hero(
+    @SerializedName("id")
     val id: String,
+
+    @SerializedName("name")
     val name: String,
+
+    @SerializedName("real_name")
     val realName: String,
-    val imageUrl: Int,
-    val heroCard: String,
+
+    @SerializedName("role")
     val role: String,
+
+    @SerializedName("imageUrl")
+    val imageUrl: String,
+
+    @SerializedName("attack_type")
     val attackType: String,
-    val team: String,
+
+    @SerializedName("team")
+    val team: List<String>,
+
+    @SerializedName("difficulty")
     val difficulty: String,
+
+    @SerializedName("bio")
     val bio: String,
+
+    @SerializedName("lore")
     val lore: String,
-    val loreCard: String,
-    val transformations: List<String>,
-    val costumes: List<String>,
-    val abilities: List<String>
+
+    @SerializedName("transformations")
+    val transformations: List<Transformation>,
+
+    @SerializedName("costumes")
+    val costumes: List<Costume>,
+
+    @SerializedName("abilities")
+    val abilities: List<Ability>
 )
 
-// Example mock data
-val mockHero = Hero(
-    id = "ironman-001",
-    name = "Iron Man",
-    realName = "Tony Stark",
-    imageUrl = 2,
-    heroCard = "/premium/banners/1016_banner.png?expires=1739246863&signature=d3d5ed098cc28ea881eb1c1f2e332ca00cff3c82b2de1af334a71d2a57802104",
-    role = "DPS",
-    attackType = "ranged",
-    team = "Avengers",
-    difficulty = "medium",
-    bio = "A genius billionaire playboy philanthropist, Tony Stark is Iron Man.",
-    lore = "After surviving a near-death experience, Tony Stark builds the first Iron Man suit.",
-    loreCard = "/premium/lore/1016_lore_banner.png?expires=1739246863&signature=0ebdfc2ef7e280be743c0e49c785491b50d74726032956fe240915bfe47262be",
-    transformations = listOf("Mark I", "Mark II", "Mark III"),
-    costumes = listOf("Iron Patriot", "War Machine"),
-    abilities = listOf("Repulsor Blast", "Flight", "Laser")
+data class Transformation(
+    @SerializedName("id")
+    val id: String,
+
+    @SerializedName("name")
+    val name: String,
+
+    @SerializedName("icon")
+    val icon: String,
+
+    @SerializedName("health")
+    val health: String?,
+
+    @SerializedName("movement_speed")
+    val movementSpeed: String?
 )
+
+data class Costume(
+    @SerializedName("id")
+    val id: String,
+
+    @SerializedName("name")
+    val name: String,
+
+    @SerializedName("icon")
+    val icon: String,
+
+    @SerializedName("quality")
+    val quality: String,
+
+    @SerializedName("description")
+    val description: String,
+
+    @SerializedName("appearance")
+    val appearance: String
+)
+
+data class Ability(
+    @SerializedName("id")
+    val id: Int,
+
+    @SerializedName("icon")
+    val icon: String,
+
+    @SerializedName("name")
+    val name: String,
+
+    @SerializedName("type")
+    val type: String,
+
+    @SerializedName("isCollab")
+    val isCollab: Boolean,
+
+    @SerializedName("description")
+    val description: String,
+
+    @SerializedName("additional_fields")
+    val additionalFields: AdditionalFields?,
+
+    @SerializedName("transformation_id")
+    val transformationId: String
+)
+
+data class AdditionalFields(
+    @SerializedName("Key")
+    val key: String?,
+
+    @SerializedName("Casting")
+    val casting: String?,
+
+    @SerializedName("Energy Cost")
+    val energyCost: String?,
+
+    @SerializedName("Special Effect")
+    val specialEffect: String?
+)
+

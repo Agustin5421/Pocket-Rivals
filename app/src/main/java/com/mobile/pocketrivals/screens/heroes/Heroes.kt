@@ -10,6 +10,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.mobile.pocketrivals.components.heroes.HeroCardMap
 import com.mobile.pocketrivals.components.heroes.HeroSearchBar
@@ -17,7 +18,7 @@ import com.mobile.pocketrivals.components.heroes.HeroSearchBar
 @Composable
 fun HeroesScreen(navController: NavController) {
     var searchText by remember { mutableStateOf("") }
-    val heroesViewModel = HeroesViewModel()
+    val heroesViewModel = hiltViewModel<HeroesViewModel>()
     val originalHeroes = heroesViewModel.getHeroes()
 
     val filteredHeroes = remember(searchText) {

@@ -15,7 +15,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun HeroCard(heroImage: Int, onClick: () -> Unit) {
+fun HeroCard(heroImage: String, onClick: () -> Unit) {
     val image = painterResource(id = heroImage)
     Box(
         modifier = Modifier

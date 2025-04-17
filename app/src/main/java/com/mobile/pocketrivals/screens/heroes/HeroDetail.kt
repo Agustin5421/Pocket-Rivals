@@ -7,11 +7,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.hilt.navigation.compose.hiltViewModel
 
 @Composable
 fun HeroDetailScreen(heroId: String?) {
-    val viewModel = HeroesViewModel()
-    val hero = viewModel.getHeroById(heroId)
+    val heroesViewModel = hiltViewModel<HeroesViewModel>()
+    val hero = heroesViewModel.getHeroById(heroId)
 
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         Text(text = "Hero's name is: " + hero.name, color = Color.Black)
