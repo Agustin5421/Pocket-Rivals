@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mobile.pocketrivals.apiManager.ApiServiceImpl
 import com.mobile.pocketrivals.mocks.Hero
-import com.mobile.pocketrivals.mocks.mockHeroes
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -58,7 +57,7 @@ class HeroesViewModel @Inject constructor(
 
 
     fun getHeroById(heroId: String?) : Hero {
-        for (hero in mockHeroes.heroes){
+        for (hero in _heroes.value){
             if (hero.id == heroId){
                 return hero
             }
@@ -67,6 +66,6 @@ class HeroesViewModel @Inject constructor(
     }
 
     fun getHeroes() : List<Hero> {
-        return mockHeroes.heroes
+        return _heroes.value
     }
 }

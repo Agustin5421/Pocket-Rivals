@@ -1,7 +1,5 @@
 package com.mobile.pocketrivals.components.home
 
-import android.os.Build
-import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -22,7 +20,6 @@ import androidx.compose.ui.unit.dp
 import com.mobile.pocketrivals.R
 
 
-@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun HeroTierList(modifier: Modifier = Modifier, heroStats: List<HeroStats>) {
     CompositionLocalProvider(LocalTextStyle provides TextStyle(color = Color.Black)) {

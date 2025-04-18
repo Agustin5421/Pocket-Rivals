@@ -1,12 +1,12 @@
 package com.mobile.pocketrivals.apiManager
 
-import retrofit.Call
 import com.mobile.pocketrivals.mocks.Hero
+import retrofit.Call
 import retrofit.http.GET
-import retrofit.http.Query
+import retrofit.http.Header
 
 
 interface ApiService {
     @GET("heroes")
-    fun getHeroes(@Query("api_key") apiKey: String): Call<List<Hero>>
+    fun getHeroes(@Header("x-api-key") apiKey: String): Call<List<Hero>>
 }

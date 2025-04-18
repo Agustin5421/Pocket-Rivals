@@ -71,7 +71,7 @@ fun HeroSearchBar(
                 BasicTextField(
                     value = text,
                     onValueChange = onTextChange,
-                    textStyle = TextStyle(fontSize = 16.sp, color = MaterialTheme.colorScheme.primary),
+                    textStyle = TextStyle(fontSize = 16.sp, color = MaterialTheme.colorScheme.secondary),
                     singleLine = true,
                     cursorBrush = SolidColor(MaterialTheme.colorScheme.primary),
                     modifier = Modifier.fillMaxWidth()

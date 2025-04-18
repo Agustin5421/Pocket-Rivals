@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -19,13 +20,13 @@ import com.mobile.pocketrivals.components.heroes.HeroSearchBar
 fun HeroesScreen(navController: NavController) {
     var searchText by remember { mutableStateOf("") }
     val heroesViewModel = hiltViewModel<HeroesViewModel>()
-    val originalHeroes = heroesViewModel.getHeroes()
 
-    val filteredHeroes = remember(searchText) {
+    val heroes by heroesViewModel.heroes.collectAsState()
+    val filteredHeroes = remember(searchText, heroes) {
         if (searchText.isEmpty()) {
-            originalHeroes
+            heroes
         } else {
-            originalHeroes.filter { hero ->
+            heroes.filter { hero ->
                 hero.name.contains(searchText, ignoreCase = true)
             }
         }

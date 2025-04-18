@@ -1,7 +1,5 @@
 package com.mobile.pocketrivals.screens.home
 
-import android.os.Build
-import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -11,13 +9,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.mobile.pocketrivals.R
+import com.mobile.pocketrivals.components.home.HeroStats
 import com.mobile.pocketrivals.components.home.HeroTierList
 import com.mobile.pocketrivals.components.home.PatchNotesCarousel
 import com.mobile.pocketrivals.components.home.TopBar
-import com.mobile.pocketrivals.mocks.heroStats
 import com.mobile.pocketrivals.mocks.mockNews
 
-@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun HomeScreen(navController: NavController) {
 
@@ -44,7 +42,17 @@ fun HomeScreen(navController: NavController) {
         )
          */
 
-        val heroStats = heroStats
+        val heroStats = listOf<HeroStats>(
+            HeroStats(
+                rank = 1,
+                championName = "hero",
+                championIconResId = R.drawable.mock_hero_image,
+                roleIconResId = R.drawable.dps_image,
+                winRate = "1",
+                pickRate = "1",
+                banRate = "1"
+            )
+        )
         //TODO: fetch from DB Hero Stats
         HeroTierList(modifier = Modifier
             .padding(top = 8.dp), heroStats
