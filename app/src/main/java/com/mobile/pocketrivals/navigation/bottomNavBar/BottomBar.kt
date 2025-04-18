@@ -1,4 +1,4 @@
-package com.mobile.pocketrivals.components.bottomNavBar
+package com.mobile.pocketrivals.navigation.bottomNavBar
 
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.size

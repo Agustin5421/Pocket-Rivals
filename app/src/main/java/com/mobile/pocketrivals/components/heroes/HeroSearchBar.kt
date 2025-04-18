@@ -41,10 +41,12 @@ fun HeroSearchBar(
         modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp)
+            .padding(top = 12.dp)
             .height(56.dp),
         shape = RoundedCornerShape(8.dp),
         border = BorderStroke(2.dp, MaterialTheme.colorScheme.tertiary),
-        tonalElevation = 4.dp
+        tonalElevation = 4.dp,
+        color = MaterialTheme.colorScheme.primary
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,

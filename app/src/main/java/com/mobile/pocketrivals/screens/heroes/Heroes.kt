@@ -2,8 +2,6 @@ package com.mobile.pocketrivals.screens.heroes
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -32,18 +30,17 @@ fun HeroesScreen(navController: NavController) {
         }
     }
 
-    Scaffold { paddingValues ->
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(paddingValues),
-        ) {
-            HeroSearchBar(
-                text = searchText,
-                onTextChange = { searchText = it },
-            )
-            HeroCardMap(heroes = filteredHeroes, navController)
-        }
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+    ) {
+        HeroSearchBar(
+            text = searchText,
+            onTextChange = { searchText = it },
+        )
+        HeroCardMap(heroes = filteredHeroes, navController)
     }
+
 
 }

@@ -24,7 +24,7 @@ fun PatchNotesCard(patchNotes: PatchNotes, navController: NavController, modifie
         modifier = modifier
             .fillMaxWidth()
             .height(250.dp)
-            .clickable { navController.navigate("${PocketRivalsScreen.PatchNote}/${patchNotes.id}") },
+            .clickable { navController.navigate("${PocketRivalsScreen.PatchNotes}/${patchNotes.id}") },
         shape = RoundedCornerShape(8.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
     ) {
