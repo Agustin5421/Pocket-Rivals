@@ -1,11 +1,10 @@
 package com.mobile.pocketrivals.components.home
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -19,26 +18,33 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.mobile.pocketrivals.R
 
-
 @Composable
 fun HeroTierList(modifier: Modifier = Modifier, heroStats: List<HeroStats>) {
-    CompositionLocalProvider(LocalTextStyle provides TextStyle(color = Color.Black)) {
-        Column(modifier = modifier) {
-            Box(modifier = Modifier
-                .background(color = MaterialTheme.colorScheme.onPrimary)
-                .padding(8.dp)
-            ) {
+    Surface(
+        modifier = modifier.fillMaxWidth()
+    ) {
+        CompositionLocalProvider(LocalTextStyle provides TextStyle(color = Color.Black)) {
+            Column {
+                // Encabezado de la tabla
                 HeroTierListHeader()
-            }
 
-            LazyColumn {
-                items(heroStats) { heroStat ->
-                    HeroTierListItem(stats = heroStat)
+                // Divider
+                HorizontalDivider(
+                    color = MaterialTheme.colorScheme.surfaceVariant,
+                    thickness = 1.dp
+                )
+                // Hero List
+                LazyColumn {
+                    items(heroStats) { heroStat ->
+                        HeroTierListItem(stats = heroStat)
+                        HorizontalDivider(
+                            color = MaterialTheme.colorScheme.surfaceVariant,
+                            thickness = 1.dp
+                        )                    }
                 }
             }
         }
     }
-
 }
 
 @Preview(showBackground = true)

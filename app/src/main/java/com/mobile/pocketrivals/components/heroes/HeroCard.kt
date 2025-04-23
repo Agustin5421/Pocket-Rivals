@@ -1,6 +1,5 @@
 package com.mobile.pocketrivals.components.heroes
 
-import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -23,7 +22,6 @@ fun HeroCard(heroImage: String, onClick: () -> Unit) {
     val fullImageUrl = "$baseUrl$heroImage"
     val imagePainter = rememberAsyncImagePainter(model = fullImageUrl)
 
-    Log.d("HeroCard", "Image URL: $heroImage")
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -40,7 +38,7 @@ fun HeroCard(heroImage: String, onClick: () -> Unit) {
                 contentScale = ContentScale.Crop,
                 painter = imagePainter,
                 contentDescription = null,
-                alignment = Alignment.TopCenter  // This focuses on the top part of the image
+                alignment = Alignment.TopCenter
             )
         }
     }
