@@ -88,7 +88,7 @@ data class Ability(
     val icon: String,
 
     @SerializedName("name")
-    val name: String,
+    val name: String?,
 
     @SerializedName("type")
     val type: String,
@@ -97,7 +97,7 @@ data class Ability(
     val isCollab: Boolean,
 
     @SerializedName("description")
-    val description: String,
+    val description: String?,
 
     @SerializedName("additional_fields")
     val additionalFields: AdditionalFields?,
