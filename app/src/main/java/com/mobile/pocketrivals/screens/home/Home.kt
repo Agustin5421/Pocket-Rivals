@@ -4,7 +4,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
@@ -15,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
@@ -32,10 +32,7 @@ fun HomeScreen(navController: NavController) {
   val retry by homeViewModel.showRetry.collectAsStateWithLifecycle()
 
   Scaffold { innerPadding ->
-    Box(
-      modifier = Modifier.fillMaxSize().padding(innerPadding),
-      contentAlignment = Alignment.Center
-    ) {
+    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
       if (loading) {
         CircularProgressIndicator(
           color = MaterialTheme.colorScheme.tertiary,
@@ -43,8 +40,8 @@ fun HomeScreen(navController: NavController) {
         )
       } else if (retry) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
-          Text("There was an error")
-          Button(onClick = homeViewModel::retryApiCall) { Text("Retry") }
+          Text(stringResource(R.string.there_was_an_error))
+          Button(onClick = homeViewModel::retryApiCall) { Text(stringResource(R.string.retry)) }
         }
       } else {
         Column(
@@ -55,48 +52,49 @@ fun HomeScreen(navController: NavController) {
           PatchNotesCarousel(patchNotes, navController = navController)
 
           // TODO: add more mock data and move it to a viewmodel
-          val heroStats =
-            listOf(
-              HeroStats(
-                rank = 1,
-                championName = "hero",
-                championIconResId = R.drawable.mock_hero_image,
-                roleIconResId = R.drawable.dps_image,
-                winRate = "1",
-                pickRate = "1",
-                banRate = "1"
-              ),
-              HeroStats(
-                rank = 1,
-                championName = "hero",
-                championIconResId = R.drawable.mock_hero_image,
-                roleIconResId = R.drawable.dps_image,
-                winRate = "1",
-                pickRate = "1",
-                banRate = "1"
-              ),
-              HeroStats(
-                rank = 1,
-                championName = "hero",
-                championIconResId = R.drawable.mock_hero_image,
-                roleIconResId = R.drawable.dps_image,
-                winRate = "1",
-                pickRate = "1",
-                banRate = "1"
-              ),
-              HeroStats(
-                rank = 1,
-                championName = "hero",
-                championIconResId = R.drawable.mock_hero_image,
-                roleIconResId = R.drawable.dps_image,
-                winRate = "1",
-                pickRate = "1",
-                banRate = "1"
-              )
-            )
-          HeroTierList(modifier = Modifier, heroStats)
+          HeroTierList(modifier = Modifier, mockHeroStats)
         }
       }
     }
   }
 }
+
+val mockHeroStats =
+  listOf(
+    HeroStats(
+      rank = 1,
+      championName = "hero",
+      championIconResId = R.drawable.mock_hero_image,
+      roleIconResId = R.drawable.dps_image,
+      winRate = "1",
+      pickRate = "1",
+      banRate = "1"
+    ),
+    HeroStats(
+      rank = 1,
+      championName = "hero",
+      championIconResId = R.drawable.mock_hero_image,
+      roleIconResId = R.drawable.dps_image,
+      winRate = "1",
+      pickRate = "1",
+      banRate = "1"
+    ),
+    HeroStats(
+      rank = 1,
+      championName = "hero",
+      championIconResId = R.drawable.mock_hero_image,
+      roleIconResId = R.drawable.dps_image,
+      winRate = "1",
+      pickRate = "1",
+      banRate = "1"
+    ),
+    HeroStats(
+      rank = 1,
+      championName = "hero",
+      championIconResId = R.drawable.mock_hero_image,
+      roleIconResId = R.drawable.dps_image,
+      winRate = "1",
+      pickRate = "1",
+      banRate = "1"
+    )
+  )
