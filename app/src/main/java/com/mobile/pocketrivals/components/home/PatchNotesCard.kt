@@ -17,28 +17,25 @@ import androidx.navigation.NavController
 import com.mobile.pocketrivals.PocketRivalsScreen
 import com.mobile.pocketrivals.mocks.PatchNotes
 
-
 @Composable
 fun PatchNotesCard(
-    patchNotes: PatchNotes,
-    navController: NavController,
-    modifier: Modifier = Modifier
+  patchNotes: PatchNotes,
+  navController: NavController,
+  modifier: Modifier = Modifier
 ) {
-    Card(
-        modifier = modifier
-            .fillMaxWidth()
-            .height(230.dp)
-            .clickable {
-                navController.navigate("${PocketRivalsScreen.PatchNotes}/${patchNotes.id}")
-            },
-        shape = RoundedCornerShape(8.dp),
-        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
-    ) {
-        Image(
-            painter = painterResource(id = patchNotes.imageUrl),
-            contentDescription = patchNotes.title,
-            modifier = Modifier.fillMaxSize(),
-            contentScale = ContentScale.Crop
-        )
-    }
+  Card(
+    modifier =
+      modifier.fillMaxWidth().height(230.dp).clickable {
+        navController.navigate("${PocketRivalsScreen.PatchNotes}/${patchNotes.id}")
+      },
+    shape = RoundedCornerShape(8.dp),
+    elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+  ) {
+    Image(
+      painter = painterResource(id = patchNotes.imageUrl),
+      contentDescription = patchNotes.title,
+      modifier = Modifier.fillMaxSize(),
+      contentScale = ContentScale.Crop
+    )
+  }
 }

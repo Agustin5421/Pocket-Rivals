@@ -14,32 +14,25 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
 
-
 @Composable
 fun HeroCard(heroImage: String, onClick: () -> Unit) {
-    //TODO: replace with saved string
-    val baseUrl = "https://marvelrivalsapi.com"
-    val fullImageUrl = "$baseUrl$heroImage"
-    val imagePainter = rememberAsyncImagePainter(model = fullImageUrl)
+  // TODO: replace with saved string
+  val baseUrl = "https://marvelrivalsapi.com"
+  val fullImageUrl = "$baseUrl$heroImage"
+  val imagePainter = rememberAsyncImagePainter(model = fullImageUrl)
 
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(8.dp)
-            .clickable { onClick() },
-        contentAlignment = Alignment.TopStart
-    ) {
-        Card(
-            modifier = Modifier
-                .size(width = 120.dp, height = 120.dp)
-        ) {
-            Image(
-                modifier = Modifier.fillMaxSize(),
-                contentScale = ContentScale.Crop,
-                painter = imagePainter,
-                contentDescription = null,
-                alignment = Alignment.TopCenter
-            )
-        }
+  Box(
+    modifier = Modifier.fillMaxSize().padding(8.dp).clickable { onClick() },
+    contentAlignment = Alignment.TopStart
+  ) {
+    Card(modifier = Modifier.size(width = 120.dp, height = 120.dp)) {
+      Image(
+        modifier = Modifier.fillMaxSize(),
+        contentScale = ContentScale.Crop,
+        painter = imagePainter,
+        contentDescription = null,
+        alignment = Alignment.TopCenter
+      )
     }
+  }
 }

@@ -13,21 +13,12 @@ import androidx.navigation.NavController
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TopBar(navController: NavController) {
-    TopAppBar(
-        title = {
-            Text(
-                text = "Pocket Rivals",
-                color = MaterialTheme.colorScheme.tertiary
-            )
-        },
-        actions = {
-            //SettingsButton(navController)
-        },
-        modifier = Modifier
-            .fillMaxWidth()
-        ,
-        colors = TopAppBarDefaults.topAppBarColors(
-            containerColor = MaterialTheme.colorScheme.secondary
-        )
-    )
+  TopAppBar(
+    title = { Text(text = "Pocket Rivals", color = MaterialTheme.colorScheme.tertiary) },
+    actions = {
+      // SettingsButton(navController)
+    },
+    modifier = Modifier.fillMaxWidth(),
+    colors = TopAppBarDefaults.topAppBarColors(containerColor = MaterialTheme.colorScheme.secondary)
+  )
 }

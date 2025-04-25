@@ -21,44 +21,43 @@ import com.mobile.pocketrivals.ui.theme.Black10
 
 @Composable
 fun DifficultyInfoRow(difficultyString: String) {
-    val difficulty = try {
-        difficultyString.toInt().coerceIn(0, 5)
+  val difficulty =
+    try {
+      difficultyString.toInt().coerceIn(0, 5)
     } catch (_: NumberFormatException) {
-        0
+      0
     }
 
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(vertical = 4.dp),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Text(
-            text = "Difficulty:",
-            fontSize = 14.sp,
-            fontWeight = FontWeight.Bold,
-            color = Black10,
-            modifier = Modifier.width(120.dp)
+  Row(
+    modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp),
+    verticalAlignment = Alignment.CenterVertically
+  ) {
+    Text(
+      text = "Difficulty:",
+      fontSize = 14.sp,
+      fontWeight = FontWeight.Bold,
+      color = Black10,
+      modifier = Modifier.width(120.dp)
+    )
+
+    Row(verticalAlignment = Alignment.CenterVertically) {
+      repeat(difficulty) {
+        Icon(
+          imageVector = Icons.Filled.Star,
+          contentDescription = null,
+          tint = MaterialTheme.colorScheme.tertiary,
+          modifier = Modifier.size(14.dp)
         )
+      }
 
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            repeat(difficulty) {
-                Icon(
-                    imageVector = Icons.Filled.Star,
-                    contentDescription = null,
-                    tint = MaterialTheme.colorScheme.tertiary,
-                    modifier = Modifier.size(14.dp)
-                )
-            }
-
-            repeat(5 - difficulty) {
-                Icon(
-                    imageVector = Icons.Outlined.Star,
-                    contentDescription = null,
-                    tint = Black10.copy(alpha = 0.5f),
-                    modifier = Modifier.size(14.dp)
-                )
-            }
-        }
+      repeat(5 - difficulty) {
+        Icon(
+          imageVector = Icons.Outlined.Star,
+          contentDescription = null,
+          tint = Black10.copy(alpha = 0.5f),
+          modifier = Modifier.size(14.dp)
+        )
+      }
     }
+  }
 }

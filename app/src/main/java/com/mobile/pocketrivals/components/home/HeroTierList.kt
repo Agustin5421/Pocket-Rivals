@@ -21,68 +21,60 @@ import com.mobile.pocketrivals.R
 
 @Composable
 fun HeroTierList(modifier: Modifier = Modifier, heroStats: List<HeroStats>) {
-    Surface(
-        modifier = modifier.fillMaxWidth().background(MaterialTheme.colorScheme.onPrimary),
-    ) {
-        CompositionLocalProvider(LocalTextStyle provides TextStyle(color = Color.Black)) {
-            Column {
-                HeroTierListHeader()
+  Surface(
+    modifier = modifier.fillMaxWidth().background(MaterialTheme.colorScheme.onPrimary),
+  ) {
+    CompositionLocalProvider(LocalTextStyle provides TextStyle(color = Color.Black)) {
+      Column {
+        HeroTierListHeader()
 
-                HorizontalDivider(
-                    color = MaterialTheme.colorScheme.surfaceVariant,
-                    thickness = 1.dp
-                )
-                // Hero List
-                LazyColumn() {
-                    items(heroStats) { heroStat ->
-                        HeroTierListItem(stats = heroStat)
-                        HorizontalDivider(
-                            color = MaterialTheme.colorScheme.surfaceVariant,
-                            thickness = 1.dp
-                        )                    }
-                }
-            }
+        HorizontalDivider(color = MaterialTheme.colorScheme.surfaceVariant, thickness = 1.dp)
+        // Hero List
+        LazyColumn() {
+          items(heroStats) { heroStat ->
+            HeroTierListItem(stats = heroStat)
+            HorizontalDivider(color = MaterialTheme.colorScheme.surfaceVariant, thickness = 1.dp)
+          }
         }
+      }
     }
+  }
 }
 
 @Preview(showBackground = true)
 @Composable
 fun PreviewHeroTierList() {
-    val heroStats = remember {
-        listOf(
-            HeroStats(
-                rank = 1,
-                championName = "Adam Warlock",
-                championIconResId = R.drawable.mock_hero_image,
-                roleIconResId = R.drawable.dps_image,
-                winRate = "54.31%",
-                pickRate = "10.69%",
-                banRate = "43.09%"
-            ),
-            HeroStats(
-                rank = 1,
-                championName = "Adam Warlock",
-                championIconResId = R.drawable.mock_hero_image,
-                roleIconResId = R.drawable.dps_image,
-                winRate = "54.31%",
-                pickRate = "10.69%",
-                banRate = "43.09%"
-            ),
-            HeroStats(
-                rank = 1,
-                championName = "Adam Warlock",
-                championIconResId = R.drawable.mock_hero_image,
-                roleIconResId = R.drawable.dps_image,
-                winRate = "54.31%",
-                pickRate = "10.69%",
-                banRate = "43.09%"
-            )
+  val heroStats = remember {
+    listOf(
+      HeroStats(
+        rank = 1,
+        championName = "Adam Warlock",
+        championIconResId = R.drawable.mock_hero_image,
+        roleIconResId = R.drawable.dps_image,
+        winRate = "54.31%",
+        pickRate = "10.69%",
+        banRate = "43.09%"
+      ),
+      HeroStats(
+        rank = 1,
+        championName = "Adam Warlock",
+        championIconResId = R.drawable.mock_hero_image,
+        roleIconResId = R.drawable.dps_image,
+        winRate = "54.31%",
+        pickRate = "10.69%",
+        banRate = "43.09%"
+      ),
+      HeroStats(
+        rank = 1,
+        championName = "Adam Warlock",
+        championIconResId = R.drawable.mock_hero_image,
+        roleIconResId = R.drawable.dps_image,
+        winRate = "54.31%",
+        pickRate = "10.69%",
+        banRate = "43.09%"
+      )
+    )
+  }
 
-        )
-    }
-
-    Surface(color = MaterialTheme.colorScheme.background) {
-        HeroTierList(heroStats = heroStats)
-    }
+  Surface(color = MaterialTheme.colorScheme.background) { HeroTierList(heroStats = heroStats) }
 }

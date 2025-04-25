@@ -33,79 +33,65 @@ import com.mobile.pocketrivals.mocks.Ability
 
 @Composable
 fun AbilityCard(ability: Ability) {
-    if (ability.name == null) return
+  if (ability.name == null) return
 
-    val heroImage = ability.icon
-    val baseUrl = "https://marvelrivalsapi.com/rivals"
-    val fullImageUrl = "$baseUrl$heroImage"
-    var isExpanded by remember { mutableStateOf(false) }
+  val heroImage = ability.icon
+  val baseUrl = "https://marvelrivalsapi.com/rivals"
+  val fullImageUrl = "$baseUrl$heroImage"
+  var isExpanded by remember { mutableStateOf(false) }
 
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clickable { isExpanded = !isExpanded },
-        shape = RoundedCornerShape(8.dp),
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondary)
-    ) {
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .animateContentSize()
-        ) {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(12.dp),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                // Ability Icon
-                Image(
-                    painter = rememberAsyncImagePainter(model = fullImageUrl),
-                    contentDescription = ability.name,
-                    modifier = Modifier
-                        .size(48.dp)
-                        .clip(RoundedCornerShape(4.dp))
-                )
+  Card(
+    modifier = Modifier.fillMaxWidth().clickable { isExpanded = !isExpanded },
+    shape = RoundedCornerShape(8.dp),
+    elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
+    colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondary)
+  ) {
+    Column(modifier = Modifier.fillMaxWidth().animateContentSize()) {
+      Row(
+        modifier = Modifier.fillMaxWidth().padding(12.dp),
+        verticalAlignment = Alignment.CenterVertically
+      ) {
+        // Ability Icon
+        Image(
+          painter = rememberAsyncImagePainter(model = fullImageUrl),
+          contentDescription = ability.name,
+          modifier = Modifier.size(48.dp).clip(RoundedCornerShape(4.dp))
+        )
 
-                Spacer(modifier = Modifier.width(12.dp))
+        Spacer(modifier = Modifier.width(12.dp))
 
-                // Ability Details
-                Column(modifier = Modifier.weight(1f)) {
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Text(
-                            text = ability.name.toString(),
-                            fontSize = 16.sp,
-                            fontWeight = FontWeight.Bold,
-                            color = MaterialTheme.colorScheme.primary
-                        )
+        // Ability Details
+        Column(modifier = Modifier.weight(1f)) {
+          Row(verticalAlignment = Alignment.CenterVertically) {
+            Text(
+              text = ability.name.toString(),
+              fontSize = 16.sp,
+              fontWeight = FontWeight.Bold,
+              color = MaterialTheme.colorScheme.primary
+            )
 
-                        Spacer(modifier = Modifier.width(8.dp))
-                    }
-                }
-
-            }
-
-            AnimatedVisibility(visible = isExpanded) {
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(start = 12.dp, end = 12.dp, bottom = 12.dp)
-                ) {
-                    HorizontalDivider(
-                        modifier = Modifier.padding(vertical = 8.dp),
-                        thickness = 2.dp, color = MaterialTheme.colorScheme.primary.copy(alpha = 0.2f)
-                    )
-
-                    Text(
-                        text = ability.description ?: "No description available",
-                        fontSize = 14.sp,
-                        color = MaterialTheme.colorScheme.onSecondary
-                    )
-                }
-            }
+            Spacer(modifier = Modifier.width(8.dp))
+          }
         }
+      }
+
+      AnimatedVisibility(visible = isExpanded) {
+        Column(
+          modifier = Modifier.fillMaxWidth().padding(start = 12.dp, end = 12.dp, bottom = 12.dp)
+        ) {
+          HorizontalDivider(
+            modifier = Modifier.padding(vertical = 8.dp),
+            thickness = 2.dp,
+            color = MaterialTheme.colorScheme.primary.copy(alpha = 0.2f)
+          )
+
+          Text(
+            text = ability.description ?: "No description available",
+            fontSize = 14.sp,
+            color = MaterialTheme.colorScheme.onSecondary
+          )
+        }
+      }
     }
+  }
 }

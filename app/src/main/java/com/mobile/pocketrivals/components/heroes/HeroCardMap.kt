@@ -9,20 +9,14 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import com.mobile.pocketrivals.mocks.Hero
 
-
 @Composable
 fun HeroCardMap(heroes: List<Hero>, navController: NavController) {
-    LazyVerticalGrid(
-        columns = GridCells.Fixed(3),
-        modifier = Modifier.fillMaxSize()
-    ) {
-        items(heroes) { hero ->
-            HeroCard(
-                heroImage = hero.imageUrl,
-                onClick = { navController.navigate("heroDetail/${hero.id}") }
-            )
-        }
+  LazyVerticalGrid(columns = GridCells.Fixed(3), modifier = Modifier.fillMaxSize()) {
+    items(heroes) { hero ->
+      HeroCard(
+        heroImage = hero.imageUrl,
+        onClick = { navController.navigate("heroDetail/${hero.id}") }
+      )
     }
+  }
 }
-
-

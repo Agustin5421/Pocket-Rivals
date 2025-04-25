@@ -17,57 +17,56 @@ import com.mobile.pocketrivals.mocks.mockNews
 
 @Composable
 fun HomeScreen(navController: NavController) {
-    Scaffold{ innerPadding ->
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(innerPadding),
-            verticalArrangement = Arrangement.Top,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            val news = mockNews
-            PatchNotesCarousel(newsList = listOf(news, news, news), navController = navController)
+  Scaffold { innerPadding ->
+    Column(
+      modifier = Modifier.fillMaxSize().padding(innerPadding),
+      verticalArrangement = Arrangement.Top,
+      horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+      val news = mockNews
+      PatchNotesCarousel(newsList = listOf(news, news, news), navController = navController)
 
-            //TODO: add more mock data and move it to a viewmodel
-            val heroStats = listOf(
-                HeroStats(
-                    rank = 1,
-                    championName = "hero",
-                    championIconResId = R.drawable.mock_hero_image,
-                    roleIconResId = R.drawable.dps_image,
-                    winRate = "1",
-                    pickRate = "1",
-                    banRate = "1"
-                ),
-                HeroStats(
-                    rank = 1,
-                    championName = "hero",
-                    championIconResId = R.drawable.mock_hero_image,
-                    roleIconResId = R.drawable.dps_image,
-                    winRate = "1",
-                    pickRate = "1",
-                    banRate = "1"
-                ),
-                HeroStats(
-                    rank = 1,
-                    championName = "hero",
-                    championIconResId = R.drawable.mock_hero_image,
-                    roleIconResId = R.drawable.dps_image,
-                    winRate = "1",
-                    pickRate = "1",
-                    banRate = "1"
-                ),
-                HeroStats(
-                    rank = 1,
-                    championName = "hero",
-                    championIconResId = R.drawable.mock_hero_image,
-                    roleIconResId = R.drawable.dps_image,
-                    winRate = "1",
-                    pickRate = "1",
-                    banRate = "1"
-                )
-            )
-            HeroTierList(modifier = Modifier, heroStats)
-        }
+      // TODO: add more mock data and move it to a viewmodel
+      val heroStats =
+        listOf(
+          HeroStats(
+            rank = 1,
+            championName = "hero",
+            championIconResId = R.drawable.mock_hero_image,
+            roleIconResId = R.drawable.dps_image,
+            winRate = "1",
+            pickRate = "1",
+            banRate = "1"
+          ),
+          HeroStats(
+            rank = 1,
+            championName = "hero",
+            championIconResId = R.drawable.mock_hero_image,
+            roleIconResId = R.drawable.dps_image,
+            winRate = "1",
+            pickRate = "1",
+            banRate = "1"
+          ),
+          HeroStats(
+            rank = 1,
+            championName = "hero",
+            championIconResId = R.drawable.mock_hero_image,
+            roleIconResId = R.drawable.dps_image,
+            winRate = "1",
+            pickRate = "1",
+            banRate = "1"
+          ),
+          HeroStats(
+            rank = 1,
+            championName = "hero",
+            championIconResId = R.drawable.mock_hero_image,
+            roleIconResId = R.drawable.dps_image,
+            winRate = "1",
+            pickRate = "1",
+            banRate = "1"
+          )
+        )
+      HeroTierList(modifier = Modifier, heroStats)
     }
+  }
 }

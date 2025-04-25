@@ -9,11 +9,11 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor() : ViewModel() {
 
-    fun getNews() : List<PatchNotes> {
-        return listOf(mockNews)
-    }
+  fun getNews(): List<PatchNotes> {
+    return listOf(mockNews)
+  }
 
-    fun getNewsById(id: Int): PatchNotes {
-        return PatchNotes(1, "This is a Patch Note!", "We killed Namor!", 1)
-    }
+  fun getNewsById(id: Int): PatchNotes {
+    return PatchNotes(1, "This is a Patch Note!", "We killed Namor!", 1)
+  }
 }

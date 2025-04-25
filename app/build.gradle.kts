@@ -4,7 +4,14 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     id("dagger.hilt.android.plugin")
     id("kotlin-kapt")
-    id("com.diffplug.spotless") version "5.0.0"
+    id("com.diffplug.spotless") version "6.19.0"
+}
+
+spotless {
+    kotlin {
+        target("src/**/*.kt")
+        ktfmt().googleStyle()
+    }
 }
 
 android {
@@ -42,6 +49,8 @@ android {
         compose = true
     }
 }
+
+
 
 dependencies {
     implementation(libs.androidx.navigation.compose)

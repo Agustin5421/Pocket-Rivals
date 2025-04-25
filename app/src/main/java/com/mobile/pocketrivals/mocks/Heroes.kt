@@ -1,6 +1,3 @@
 package com.mobile.pocketrivals.mocks
 
-data class Heroes(
-    val heroes: List<Hero>
-)
-
+data class eroes(val heroes: List<Hero>)

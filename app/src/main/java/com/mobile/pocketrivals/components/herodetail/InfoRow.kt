@@ -15,23 +15,17 @@ import com.mobile.pocketrivals.ui.theme.Black10
 
 @Composable
 fun InfoRow(label: String, value: String) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(vertical = 4.dp),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Text(
-            text = "$label:",
-            fontSize = 14.sp,
-            fontWeight = FontWeight.Bold,
-            color = Black10,
-            modifier = Modifier.width(120.dp)
-        )
-        Text(
-            text = value,
-            fontSize = 14.sp,
-            color = Black10
-        )
-    }
+  Row(
+    modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp),
+    verticalAlignment = Alignment.CenterVertically
+  ) {
+    Text(
+      text = "$label:",
+      fontSize = 14.sp,
+      fontWeight = FontWeight.Bold,
+      color = Black10,
+      modifier = Modifier.width(120.dp)
+    )
+    Text(text = value, fontSize = 14.sp, color = Black10)
+  }
 }

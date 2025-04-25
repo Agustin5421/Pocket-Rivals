@@ -10,14 +10,11 @@ import androidx.navigation.NavController
 
 @Composable
 fun SettingsButton(navController: NavController) {
-    IconButton(onClick = {
-            navController.navigate("settings")
-        }
-    ) {
-        Icon(
-            imageVector = Icons.Default.Settings,
-            contentDescription = "Configuration",
-            tint = MaterialTheme.colorScheme.primary
-        )
-    }
+  IconButton(onClick = { navController.navigate("settings") }) {
+    Icon(
+      imageVector = Icons.Default.Settings,
+      contentDescription = "Configuration",
+      tint = MaterialTheme.colorScheme.primary
+    )
+  }
 }

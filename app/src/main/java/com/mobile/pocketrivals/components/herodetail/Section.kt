@@ -14,19 +14,19 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun Section(title: String, content: @Composable () -> Unit) {
-    Column(modifier = Modifier.fillMaxWidth()) {
-        Text(
-            text = title,
-            fontSize = 18.sp,
-            fontWeight = FontWeight.Bold,
-            color = MaterialTheme.colorScheme.tertiary,
-            modifier = Modifier.padding(bottom = 8.dp)
-        )
-        HorizontalDivider(
-            color = MaterialTheme.colorScheme.onBackground,
-            thickness = 1.dp,
-            modifier = Modifier.padding(bottom = 8.dp)
-        )
-        content()
-    }
+  Column(modifier = Modifier.fillMaxWidth()) {
+    Text(
+      text = title,
+      fontSize = 18.sp,
+      fontWeight = FontWeight.Bold,
+      color = MaterialTheme.colorScheme.tertiary,
+      modifier = Modifier.padding(bottom = 8.dp)
+    )
+    HorizontalDivider(
+      color = MaterialTheme.colorScheme.onBackground,
+      thickness = 1.dp,
+      modifier = Modifier.padding(bottom = 8.dp)
+    )
+    content()
+  }
 }

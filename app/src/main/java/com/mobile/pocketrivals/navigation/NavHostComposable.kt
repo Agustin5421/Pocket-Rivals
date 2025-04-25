@@ -21,35 +21,28 @@ import com.mobile.pocketrivals.screens.home.SettingsScreen
 
 @Composable
 fun NavHostComposable(innerPadding: PaddingValues, navController: NavHostController) {
-    NavHost (
-        navController = navController,
-        startDestination = BottomBarItem.Home.route,
-        modifier = Modifier.fillMaxSize().padding(innerPadding)
-    ) {
-        composable(route = BottomBarItem.Home.route) {
-            HomeScreen(navController)
-        }
-        composable(route = BottomBarItem.Heroes.route) {
-            HeroesScreen(navController)
-        }
-        composable(route = BottomBarItem.Profile.route) {
-            ProfileScreen()
-        }
-        composable(route = "${PocketRivalsScreen.HeroDetail}/{heroId}",
-            arguments = listOf(navArgument("heroId") { type = NavType.StringType })
-        ) { backStackEntry ->
-            val heroId = backStackEntry.arguments?.getString("heroId")
-            HeroDetailScreen(heroId = heroId)
-        }
-        composable(route = PocketRivalsScreen.Settings.name) {
-            SettingsScreen()
-        }
-        composable(route = "${PocketRivalsScreen.PatchNotes}/{patchNotes}",
-            arguments = listOf(navArgument("patchNotes") { type = NavType.StringType })
-        ) { backStackEntry ->
-            val patchNotesId = backStackEntry.arguments?.getString("patchNotes")
-            PatchNotes(patchNotesId = patchNotesId)
-        }
-
+  NavHost(
+    navController = navController,
+    startDestination = BottomBarItem.Home.route,
+    modifier = Modifier.fillMaxSize().padding(innerPadding)
+  ) {
+    composable(route = BottomBarItem.Home.route) { HomeScreen(navController) }
+    composable(route = BottomBarItem.Heroes.route) { HeroesScreen(navController) }
+    composable(route = BottomBarItem.Profile.route) { ProfileScreen() }
+    composable(
+      route = "${PocketRivalsScreen.HeroDetail}/{heroId}",
+      arguments = listOf(navArgument("heroId") { type = NavType.StringType })
+    ) { backStackEntry ->
+      val heroId = backStackEntry.arguments?.getString("heroId")
+      HeroDetailScreen(heroId = heroId)
     }
+    composable(route = PocketRivalsScreen.Settings.name) { SettingsScreen() }
+    composable(
+      route = "${PocketRivalsScreen.PatchNotes}/{patchNotes}",
+      arguments = listOf(navArgument("patchNotes") { type = NavType.StringType })
+    ) { backStackEntry ->
+      val patchNotesId = backStackEntry.arguments?.getString("patchNotes")
+      PatchNotes(patchNotesId = patchNotesId)
+    }
+  }
 }
