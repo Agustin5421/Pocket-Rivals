@@ -29,7 +29,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
-import com.mobile.pocketrivals.mocks.Ability
+import com.mobile.pocketrivals.data.Ability
 
 @Composable
 fun AbilityCard(ability: Ability) {

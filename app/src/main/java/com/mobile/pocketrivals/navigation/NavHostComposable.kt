@@ -13,11 +13,11 @@ import androidx.navigation.navArgument
 import com.mobile.pocketrivals.PocketRivalsScreen
 import com.mobile.pocketrivals.navigation.bottomNavBar.BottomBarItem
 import com.mobile.pocketrivals.screens.ProfileScreen
-import com.mobile.pocketrivals.screens.heroes.HeroDetailScreen
+import com.mobile.pocketrivals.screens.herodetail.HeroDetailScreen
 import com.mobile.pocketrivals.screens.heroes.HeroesScreen
 import com.mobile.pocketrivals.screens.home.HomeScreen
-import com.mobile.pocketrivals.screens.home.PatchNotes
-import com.mobile.pocketrivals.screens.home.SettingsScreen
+import com.mobile.pocketrivals.screens.patchnotes.PatchNotesScreen
+import com.mobile.pocketrivals.screens.settings.SettingsScreen
 
 @Composable
 fun NavHostComposable(innerPadding: PaddingValues, navController: NavHostController) {
@@ -42,7 +42,7 @@ fun NavHostComposable(innerPadding: PaddingValues, navController: NavHostControl
       arguments = listOf(navArgument("patchNotes") { type = NavType.StringType })
     ) { backStackEntry ->
       val patchNotesId = backStackEntry.arguments?.getString("patchNotes")
-      PatchNotes(patchNotesId = patchNotesId)
+      PatchNotesScreen(patchNotesId = patchNotesId)
     }
   }
 }

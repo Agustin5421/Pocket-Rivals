@@ -3,7 +3,8 @@ package com.mobile.pocketrivals.apiManager
 import android.content.Context
 import android.widget.Toast
 import com.mobile.pocketrivals.R
-import com.mobile.pocketrivals.mocks.Hero
+import com.mobile.pocketrivals.data.Hero
+import com.mobile.pocketrivals.data.PatchNotesResponse
 import javax.inject.Inject
 import retrofit.Call
 import retrofit.Callback
@@ -42,6 +43,43 @@ class ApiServiceImpl @Inject constructor() {
 
         override fun onFailure(t: Throwable?) {
           Toast.makeText(context, "Can't get heroes", Toast.LENGTH_SHORT).show()
+          onFail()
+          loadingFinished()
+        }
+      }
+    )
+  }
+
+  fun getPatchNotes(
+    context: Context,
+    onSuccess: (PatchNotesResponse) -> Unit,
+    onFail: () -> Unit,
+    loadingFinished: () -> Unit
+  ) {
+    val retrofit: Retrofit =
+      Retrofit.Builder()
+        .baseUrl(context.getString(R.string.rivals_api))
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+
+    val service: ApiService = retrofit.create(ApiService::class.java)
+    val call: Call<PatchNotesResponse> =
+      service.getPatchNotes(context.getString(R.string.api_key), 1, 3)
+
+    call.enqueue(
+      object : Callback<PatchNotesResponse> {
+        override fun onResponse(response: Response<PatchNotesResponse>?, retrofit: Retrofit?) {
+          loadingFinished()
+          if (response?.isSuccess == true) {
+            val patchNotes: PatchNotesResponse = response.body()
+            onSuccess(patchNotes)
+          } else {
+            onFailure(Exception("Bad request"))
+          }
+        }
+
+        override fun onFailure(t: Throwable?) {
+          Toast.makeText(context, "Can't get Patch Notes", Toast.LENGTH_SHORT).show()
           onFail()
           loadingFinished()
         }

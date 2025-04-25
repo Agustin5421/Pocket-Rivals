@@ -7,7 +7,7 @@ import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
-import com.mobile.pocketrivals.mocks.Hero
+import com.mobile.pocketrivals.data.Hero
 
 @Composable
 fun HeroCardMap(heroes: List<Hero>, navController: NavController) {

@@ -6,25 +6,28 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.mobile.pocketrivals.R
 import com.mobile.pocketrivals.components.home.HeroStats
 import com.mobile.pocketrivals.components.home.HeroTierList
 import com.mobile.pocketrivals.components.home.PatchNotesCarousel
-import com.mobile.pocketrivals.mocks.mockNews
 
 @Composable
 fun HomeScreen(navController: NavController) {
+  val homeViewModel = hiltViewModel<HomeViewModel>()
+  val patchNotes = homeViewModel.getNews()
+
   Scaffold { innerPadding ->
     Column(
       modifier = Modifier.fillMaxSize().padding(innerPadding),
       verticalArrangement = Arrangement.Top,
       horizontalAlignment = Alignment.CenterHorizontally
     ) {
-      val news = mockNews
-      PatchNotesCarousel(newsList = listOf(news, news, news), navController = navController)
+      PatchNotesCarousel(patchNotes, navController = navController)
 
       // TODO: add more mock data and move it to a viewmodel
       val heroStats =

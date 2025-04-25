@@ -1,4 +1,4 @@
-package com.mobile.pocketrivals.screens.home
+package com.mobile.pocketrivals.screens.settings
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -9,13 +9,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 
 @Composable
-fun PatchNotes(patchNotesId: String?) {
-  val homeViewModel = HomeViewModel()
-
-  // TODO: change this
-  val patchNote = homeViewModel.getNewsById(patchNotesId!!.toInt())
-
+fun SettingsScreen() {
   Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-    Text(text = patchNote.title, color = Color.Black)
+    Text(text = "Settings Screen", color = Color.Black)
   }
 }

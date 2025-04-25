@@ -1,4 +1,4 @@
-package com.mobile.pocketrivals.screens.heroes
+package com.mobile.pocketrivals.screens.herodetail
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -11,7 +11,6 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -20,11 +19,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.mobile.pocketrivals.components.herodetail.AbilityCard
 import com.mobile.pocketrivals.components.herodetail.DifficultyInfoRow
 import com.mobile.pocketrivals.components.herodetail.InfoRow
 import com.mobile.pocketrivals.components.herodetail.MainCard
 import com.mobile.pocketrivals.components.herodetail.Section
+import com.mobile.pocketrivals.screens.heroes.HeroesViewModel
 import com.mobile.pocketrivals.ui.theme.Black10
 import com.mobile.pocketrivals.ui.theme.White
 
@@ -33,8 +34,8 @@ import com.mobile.pocketrivals.ui.theme.White
 // TODO: should do a switch for heroes who have more than 1 form
 @Composable
 fun HeroDetailScreen(heroId: String?) {
-  val viewModel: HeroesViewModel = hiltViewModel()
-  val heroes by viewModel.heroes.collectAsState()
+  val viewModel = hiltViewModel<HeroesViewModel>()
+  val heroes by viewModel.heroes.collectAsStateWithLifecycle()
 
   val hero = remember(heroId, heroes) { heroes.find { it.id == heroId } }
 

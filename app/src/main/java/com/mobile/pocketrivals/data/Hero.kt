@@ -1,4 +1,4 @@
-package com.mobile.pocketrivals.mocks
+package com.mobile.pocketrivals.data
 
 import com.google.gson.annotations.SerializedName
 

@@ -22,8 +22,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.mobile.pocketrivals.R
 import com.mobile.pocketrivals.components.heroes.HeroCard
-import com.mobile.pocketrivals.mocks.Hero
-import com.mobile.pocketrivals.screens.heroes.toTitleCase
+import com.mobile.pocketrivals.data.Hero
+import com.mobile.pocketrivals.screens.herodetail.toTitleCase
 import com.mobile.pocketrivals.ui.theme.Black10
 
 @Composable

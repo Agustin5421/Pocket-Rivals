@@ -12,11 +12,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.mobile.pocketrivals.mocks.PatchNotes
+import com.mobile.pocketrivals.data.PatchNote
 
 @Composable
 fun PatchNotesCarousel(
-  newsList: List<PatchNotes>,
+  newsList: List<PatchNote>,
   modifier: Modifier = Modifier,
   navController: NavController
 ) {
