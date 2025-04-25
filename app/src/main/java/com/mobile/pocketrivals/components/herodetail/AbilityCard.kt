@@ -59,7 +59,7 @@ fun AbilityCard(ability: Ability) {
           painter = rememberAsyncImagePainter(model = fullImageUrl),
           contentDescription = ability.name,
           modifier =
-            Modifier.size(Dimensions.MediumIcon)
+            Modifier.size(Dimensions.LargeIcon)
               .clip(RoundedCornerShape(Dimensions.SmallRoundedCorner))
         )
 

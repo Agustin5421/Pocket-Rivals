@@ -66,7 +66,7 @@ fun HeroMainCard(hero: Hero) {
           painter = painterResource(iconResource),
           contentDescription = hero.role,
           tint = MaterialTheme.colorScheme.secondary,
-          modifier = Modifier.size(Dimensions.SmallIcon)
+          modifier = Modifier.size(Dimensions.MediumIcon)
         )
 
         Spacer(modifier = Modifier.width(Dimensions.MediumSpacer))

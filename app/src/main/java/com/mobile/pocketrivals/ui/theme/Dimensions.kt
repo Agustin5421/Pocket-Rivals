@@ -24,7 +24,8 @@ object Dimensions {
 
   // Icon Size
   val SmallIcon = 14.dp
-  val MediumIcon = 50.dp
+  val MediumIcon = 20.dp
+  val LargeIcon = 50.dp
 
   // Image Size
   val SmallImage = 50.dp
@@ -51,7 +52,7 @@ object Dimensions {
   val SearchBarHeight = 56.dp
 
   // Elevation
-  val Elevation = 4.dp
+  val Elevation = 2.dp
 
   // Card Size
   val SmallCard = 100.dp
