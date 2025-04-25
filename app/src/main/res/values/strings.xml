@@ -28,4 +28,14 @@
     <string name="error">Error</string>
     <string name="settings_screen">Settings Screen</string>
     <string name="profile_screen_work_in_progress">Profile Screen, work in progress</string>
+    <string name="basic_information">Basic Information</string>
+    <string name="biography">Biography</string>
+    <string name="abilities">Abilities</string>
+    <string name="lore">Lore</string>
+    <string name="there_was_an_error">There was an error</string>
+    <string name="retry">Retry</string>
+    <string name="hero_not_found">Hero not found</string>
+    <string name="attack_type">Attack Type</string>
+    <string name="member_of">Member of</string>
+    <string name="navigation_icon">Navigation Icon</string>
 </resources>

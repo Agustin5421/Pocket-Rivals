@@ -13,12 +13,14 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
+import com.mobile.pocketrivals.R
 
 @Composable
 fun BottomBar(navController: NavHostController) {
@@ -51,16 +53,17 @@ fun RowScope.AddItem(
   NavigationBarItem(
     label = { Text(text = screen.title) },
     icon = {
+      // Since I´m using vector assets, with this I can use the imageVector property
       if (screen.iconRes != null) {
         Icon(
           painter = painterResource(id = screen.iconRes),
-          contentDescription = "Navigation Icon",
+          contentDescription = stringResource(R.string.navigation_icon),
           modifier = Modifier.size(24.dp)
         )
       } else {
         Icon(
           imageVector = screen.icon,
-          contentDescription = "Navigation Icon",
+          contentDescription = stringResource(R.string.navigation_icon),
           modifier = Modifier.size(24.dp)
         )
       }

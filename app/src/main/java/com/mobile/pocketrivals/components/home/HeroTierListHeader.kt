@@ -17,7 +17,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.mobile.pocketrivals.R
 import com.mobile.pocketrivals.ui.theme.Dimensions
 
-// TODO: extract text
 private data class HeaderItem(val text: String, val weight: Float)
 
 @Composable

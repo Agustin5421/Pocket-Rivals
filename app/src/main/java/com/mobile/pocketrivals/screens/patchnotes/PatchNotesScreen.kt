@@ -8,9 +8,12 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Button
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -37,13 +40,26 @@ fun PatchNotesScreen(patchNotesId: String?) {
   val viewModel: HomeViewModel = hiltViewModel()
   val patchNotes by viewModel.patchNotes.collectAsStateWithLifecycle()
 
+  val loading by viewModel.loading.collectAsStateWithLifecycle()
+  val retry by viewModel.showRetry.collectAsStateWithLifecycle()
+
   val patch = remember(patchNotesId, patchNotes) { patchNotes.find { it.id == patchNotesId } }
 
-  if (patch != null) {
-    PatchNoteDetailContent(patch)
-  } else {
-    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+  Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+    if (loading) {
+      CircularProgressIndicator(
+        color = MaterialTheme.colorScheme.tertiary,
+        modifier = Modifier.size(Dimensions.LoaderSize)
+      )
+    } else if (retry) {
+      Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        Text("There was an error")
+        Button(onClick = viewModel::retryApiCall) { Text("Retry") }
+      }
+    } else if (patch == null) {
       Text(text = stringResource(R.string.patch_note_not_found), color = Color.Red)
+    } else {
+      PatchNoteDetailContent(patch)
     }
   }
 }
@@ -70,7 +86,7 @@ fun PatchNoteDetailContent(patchNote: PatchNote) {
     Text(
       text = "Date: ${patchNote.date}",
       fontSize = Dimensions.SmallFontSize,
-      color = MaterialTheme.colorScheme.onSurface,
+      color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f),
       modifier = Modifier.padding(bottom = Dimensions.MediumPadding)
     )
 

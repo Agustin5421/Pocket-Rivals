@@ -63,4 +63,7 @@ object Dimensions {
 
   // Carousel
   val CarouselHeight = 250.dp
+
+  // Loader size
+  val LoaderSize = 75.dp
 }

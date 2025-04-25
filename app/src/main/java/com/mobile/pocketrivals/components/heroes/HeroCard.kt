@@ -18,7 +18,6 @@ import com.mobile.pocketrivals.ui.theme.Dimensions
 
 @Composable
 fun HeroCard(heroImage: String, onClick: () -> Unit) {
-  // TODO: replace with saved string
   val baseUrl = stringResource(R.string.https_marvelrivalsapi_com)
   val fullImageUrl = "$baseUrl$heroImage"
   val imagePainter = rememberAsyncImagePainter(model = fullImageUrl)

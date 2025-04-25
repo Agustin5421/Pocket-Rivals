@@ -16,7 +16,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
+import com.mobile.pocketrivals.R
 import com.mobile.pocketrivals.ui.theme.Dimensions
 
 // TODO: on fetching the data from the API
@@ -65,7 +67,7 @@ fun HeroTierListItem(stats: HeroStats, modifier: Modifier = Modifier) {
     Box(modifier = Modifier.weight(Dimensions.MediumWeight), contentAlignment = Alignment.Center) {
       Icon(
         painter = painterResource(id = stats.roleIconResId),
-        contentDescription = "Role",
+        contentDescription = stringResource(R.string.role),
         modifier = Modifier.size(Dimensions.SmallImage / 2),
         tint = MaterialTheme.colorScheme.secondary
       )

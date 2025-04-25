@@ -25,7 +25,6 @@ fun PatchNotesCard(
   navController: NavController,
   modifier: Modifier = Modifier
 ) {
-  // TODO: remove hardcoded baseUrl
   val baseUrl = stringResource(R.string.https_marvelrivalsapi_com_rivals)
   val fullImageUrl = "$baseUrl${patchNotes.imagePath}"
   val imagePainter = rememberAsyncImagePainter(model = fullImageUrl)
