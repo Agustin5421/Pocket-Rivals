@@ -41,10 +41,12 @@ fun HeroSearchBar(
         modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp)
+            .padding(top = 12.dp)
             .height(56.dp),
         shape = RoundedCornerShape(8.dp),
         border = BorderStroke(2.dp, MaterialTheme.colorScheme.tertiary),
-        tonalElevation = 4.dp
+        tonalElevation = 4.dp,
+        color = MaterialTheme.colorScheme.primary
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
@@ -71,7 +73,7 @@ fun HeroSearchBar(
                 BasicTextField(
                     value = text,
                     onValueChange = onTextChange,
-                    textStyle = TextStyle(fontSize = 16.sp, color = MaterialTheme.colorScheme.primary),
+                    textStyle = TextStyle(fontSize = 16.sp, color = MaterialTheme.colorScheme.secondary),
                     singleLine = true,
                     cursorBrush = SolidColor(MaterialTheme.colorScheme.primary),
                     modifier = Modifier.fillMaxWidth()

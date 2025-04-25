@@ -21,10 +21,11 @@ fun TopBar(navController: NavController) {
             )
         },
         actions = {
-            SettingsButton(navController)
+            //SettingsButton(navController)
         },
-        modifier = Modifier.
-        fillMaxWidth(),
+        modifier = Modifier
+            .fillMaxWidth()
+        ,
         colors = TopAppBarDefaults.topAppBarColors(
             containerColor = MaterialTheme.colorScheme.secondary
         )

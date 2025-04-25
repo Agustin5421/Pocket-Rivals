@@ -1,0 +1,4 @@
+<resources>
+    <string name="rivals_api">https://marvelrivalsapi.com/api/v1/</string>
+    <string name="api_key">insert api key</string>
+</resources>

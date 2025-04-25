@@ -1,81 +1,76 @@
 package com.mobile.pocketrivals.components.home
 
-import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
+//TODO: extract text
 @Composable
-fun HeroTierListHeader(modifier: Modifier = Modifier) {
+fun HeroTierListHeader() {
     Row(
-        modifier = modifier
+        modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 8.dp)
-        ,
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.SpaceBetween
+            .background(MaterialTheme.colorScheme.onBackground)
+            .padding(vertical = 12.dp, horizontal = 8.dp),
+        verticalAlignment = Alignment.CenterVertically
     ) {
-        // Position
         Text(
             text = "#",
-            modifier = Modifier.width(30.dp),
+            modifier = Modifier.weight(0.5f),
+            textAlign = TextAlign.Center,
+            fontWeight = FontWeight.Bold,
             fontSize = 14.sp
         )
-
-        // Hero
         Text(
             text = "Hero",
-            modifier = Modifier.width(30.dp + 8.dp),
+            modifier = Modifier.weight(1f),
+            textAlign = TextAlign.Center,
+            fontWeight = FontWeight.Bold,
             fontSize = 14.sp
         )
-
-        // Role
         Text(
             text = "Role",
-            modifier = Modifier.width(24.dp + 16.dp),
+            modifier = Modifier.weight(1f),
+            textAlign = TextAlign.Center,
+            fontWeight = FontWeight.Bold,
             fontSize = 14.sp
         )
-
-        // Win
         Text(
-            text = "Win",
-            modifier = Modifier.width(60.dp),
-            fontSize = 14.sp,
-            textAlign = TextAlign.End
+            text = "Win %",
+            modifier = Modifier.weight(1f),
+            textAlign = TextAlign.Center,
+            fontWeight = FontWeight.Bold,
+            fontSize = 14.sp
         )
-
-        Spacer(modifier = Modifier.width(8.dp))
-
-        // Pick
         Text(
-            text = "Pick",
-            modifier = Modifier.width(60.dp),
-            fontSize = 14.sp,
-            textAlign = TextAlign.End
+            text = "Pick %",
+            modifier = Modifier.weight(1f),
+            textAlign = TextAlign.Center,
+            fontWeight = FontWeight.Bold,
+            fontSize = 14.sp
         )
-
-        Spacer(modifier = Modifier.width(8.dp))
-
-        // Ban
         Text(
-            text = "Ban",
-            modifier = Modifier.width(60.dp),
-            fontSize = 14.sp,
-            textAlign = TextAlign.End
+            text = "Ban %",
+            modifier = Modifier.weight(1f),
+            textAlign = TextAlign.Center,
+            fontWeight = FontWeight.Bold,
+            fontSize = 14.sp
         )
     }
 }
+
 
 @Preview
 @Composable

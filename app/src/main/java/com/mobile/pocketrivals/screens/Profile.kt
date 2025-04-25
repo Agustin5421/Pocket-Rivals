@@ -11,6 +11,6 @@ import androidx.compose.ui.graphics.Color
 @Composable
 fun ProfileScreen(){
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-        Text(text = "Profile Screen", color = Color.Black)
+        Text(text = "Profile Screen, work in progress", color = Color.Black)
     }
 }
