@@ -16,8 +16,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.mobile.pocketrivals.R
+import com.mobile.pocketrivals.ui.theme.Dimensions
 
 @Composable
 fun HeroTierList(modifier: Modifier = Modifier, heroStats: List<HeroStats>) {
@@ -28,12 +28,18 @@ fun HeroTierList(modifier: Modifier = Modifier, heroStats: List<HeroStats>) {
       Column {
         HeroTierListHeader()
 
-        HorizontalDivider(color = MaterialTheme.colorScheme.surfaceVariant, thickness = 1.dp)
+        HorizontalDivider(
+          color = MaterialTheme.colorScheme.surfaceVariant,
+          thickness = Dimensions.SmallDividerThickness
+        )
         // Hero List
-        LazyColumn() {
+        LazyColumn {
           items(heroStats) { heroStat ->
             HeroTierListItem(stats = heroStat)
-            HorizontalDivider(color = MaterialTheme.colorScheme.surfaceVariant, thickness = 1.dp)
+            HorizontalDivider(
+              color = MaterialTheme.colorScheme.surfaceVariant,
+              thickness = Dimensions.SmallDividerThickness
+            )
           }
         }
       }

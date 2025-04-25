@@ -21,15 +21,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.rememberAsyncImagePainter
+import com.mobile.pocketrivals.R
 import com.mobile.pocketrivals.components.herodetail.Section
 import com.mobile.pocketrivals.data.PatchNote
 import com.mobile.pocketrivals.screens.home.HomeViewModel
+import com.mobile.pocketrivals.ui.theme.Dimensions
 
 @Composable
 fun PatchNotesScreen(patchNotesId: String?) {
@@ -42,7 +43,7 @@ fun PatchNotesScreen(patchNotesId: String?) {
     PatchNoteDetailContent(patch)
   } else {
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-      Text(text = "Patch note not found", color = Color.Red)
+      Text(text = stringResource(R.string.patch_note_not_found), color = Color.Red)
     }
   }
 }
@@ -55,80 +56,81 @@ fun PatchNoteDetailContent(patchNote: PatchNote) {
     modifier =
       Modifier.fillMaxSize()
         .verticalScroll(scrollState)
-        .padding(bottom = 16.dp)
-        .padding(horizontal = 16.dp),
+        .padding(bottom = Dimensions.MediumPadding)
+        .padding(horizontal = Dimensions.MediumPadding),
   ) {
-    // Header
     Text(
       text = patchNote.title,
-      fontSize = 24.sp,
+      fontSize = Dimensions.LargeFontSize,
       fontWeight = FontWeight.Bold,
       color = MaterialTheme.colorScheme.primary,
-      modifier = Modifier.padding(bottom = 8.dp)
+      modifier = Modifier.padding(bottom = Dimensions.SmallPadding)
     )
 
     Text(
       text = "Date: ${patchNote.date}",
-      fontSize = 14.sp,
-      color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f),
-      modifier = Modifier.padding(bottom = 16.dp)
+      fontSize = Dimensions.SmallFontSize,
+      color = MaterialTheme.colorScheme.onSurface,
+      modifier = Modifier.padding(bottom = Dimensions.MediumPadding)
     )
 
-    // Banner image
-    val baseUrl = "https://marvelrivalsapi.com/rivals"
+    val baseUrl = stringResource(R.string.https_marvelrivalsapi_com_rivals)
     val fullImageUrl = "$baseUrl${patchNote.imagePath}"
     val imagePainter = rememberAsyncImagePainter(model = fullImageUrl)
 
-    Box(modifier = Modifier.fillMaxWidth().height(250.dp).padding(bottom = 16.dp)) {
+    Box(
+      modifier =
+        Modifier.fillMaxWidth()
+          .height(Dimensions.PatchCardHeight)
+          .padding(bottom = Dimensions.MediumPadding)
+    ) {
       Image(
         painter = imagePainter,
         contentDescription = patchNote.title,
-        modifier = Modifier.fillMaxSize().clip(RoundedCornerShape(8.dp)),
+        modifier = Modifier.fillMaxSize().clip(RoundedCornerShape(Dimensions.SmallRoundedCorner)),
         contentScale = ContentScale.Crop
       )
     }
 
-    // Overview
-    Section(title = "Summary") {
+    Section(title = stringResource(R.string.summary)) {
       Text(
         text = patchNote.overview,
-        fontSize = 16.sp,
+        fontSize = Dimensions.MediumFontSize,
         color = MaterialTheme.colorScheme.onBackground,
-        modifier = Modifier.padding(bottom = 16.dp)
+        modifier = Modifier.padding(bottom = Dimensions.MediumPadding)
       )
     }
 
-    Spacer(modifier = Modifier.height(16.dp))
+    Spacer(modifier = Modifier.height(Dimensions.MediumSpacer))
 
-    // Full content
-    Section(title = "New changes") {
+    Section(title = stringResource(R.string.new_changes)) {
       val sections = parseFullContent(patchNote.fullContent)
 
       sections.forEach { (sectionTitle, sectionContent) ->
         if (sectionTitle.isNotEmpty()) {
           Text(
             text = sectionTitle,
-            fontSize = 18.sp,
+            fontSize = Dimensions.MediumFontSize,
             fontWeight = FontWeight.Bold,
             color = MaterialTheme.colorScheme.secondary,
-            modifier = Modifier.padding(top = 16.dp, bottom = 8.dp)
+            modifier =
+              Modifier.padding(top = Dimensions.MediumPadding, bottom = Dimensions.SmallPadding)
           )
         }
 
         Text(
           text = sectionContent,
-          fontSize = 15.sp,
+          fontSize = Dimensions.SmallFontSize,
           color = MaterialTheme.colorScheme.onBackground,
-          lineHeight = 24.sp
+          lineHeight = Dimensions.MediumFontSize
         )
       }
     }
 
-    Spacer(modifier = Modifier.height(24.dp))
+    Spacer(modifier = Modifier.height(Dimensions.LargeSpacer))
   }
 }
 
-// This is straight from Chatgpt, I ain´t hiding it
 private fun parseFullContent(fullContent: String): List<Pair<String, String>> {
   val sections = mutableListOf<Pair<String, String>>()
   val lines = fullContent.split("\n")

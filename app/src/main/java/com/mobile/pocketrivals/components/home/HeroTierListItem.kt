@@ -8,17 +8,16 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import com.mobile.pocketrivals.ui.theme.Dimensions
 
 // TODO: on fetching the data from the API
 // TODO: I should create these entities and save them in the DB
@@ -35,47 +34,56 @@ data class HeroStats(
 @Composable
 fun HeroTierListItem(stats: HeroStats, modifier: Modifier = Modifier) {
   Row(
-    modifier = modifier.fillMaxWidth().padding(vertical = 12.dp, horizontal = 8.dp),
+    modifier =
+      modifier
+        .fillMaxWidth()
+        .padding(vertical = Dimensions.LargePadding, horizontal = Dimensions.MediumPadding),
     verticalAlignment = Alignment.CenterVertically
   ) {
     // Rank
-    Box(modifier = Modifier.weight(0.5f), contentAlignment = Alignment.Center) {
-      Text(text = stats.rank.toString(), fontSize = 14.sp, textAlign = TextAlign.Center)
+    Box(modifier = Modifier.weight(Dimensions.SmallWeight), contentAlignment = Alignment.Center) {
+      Text(
+        text = stats.rank.toString(),
+        fontSize = Dimensions.SmallFontSize,
+        textAlign = TextAlign.Center
+      )
     }
 
     // Hero image
-    Box(modifier = Modifier.weight(1f), contentAlignment = Alignment.Center) {
+    Box(modifier = Modifier.weight(Dimensions.MediumWeight), contentAlignment = Alignment.Center) {
       Image(
         painter = painterResource(id = stats.championIconResId),
         contentDescription = stats.championName,
         contentScale = ContentScale.Crop,
-        modifier = Modifier.size(32.dp).clip(RoundedCornerShape(8.dp))
+        modifier =
+          Modifier.size(Dimensions.SmallImage)
+            .clip(RoundedCornerShape(Dimensions.MediumRoundedCorner))
       )
     }
 
     // Role
-    Box(modifier = Modifier.weight(1f), contentAlignment = Alignment.Center) {
+    Box(modifier = Modifier.weight(Dimensions.MediumWeight), contentAlignment = Alignment.Center) {
       Icon(
         painter = painterResource(id = stats.roleIconResId),
         contentDescription = "Role",
-        modifier = Modifier.size(24.dp),
-        tint = Color.Gray
+        modifier = Modifier.size(Dimensions.SmallImage / 2),
+        tint = MaterialTheme.colorScheme.secondary
       )
     }
 
     // Win Rate
-    Box(modifier = Modifier.weight(1f), contentAlignment = Alignment.Center) {
-      Text(text = stats.winRate, fontSize = 14.sp, textAlign = TextAlign.Center)
+    Box(modifier = Modifier.weight(Dimensions.MediumWeight), contentAlignment = Alignment.Center) {
+      Text(text = stats.winRate, fontSize = Dimensions.SmallFontSize, textAlign = TextAlign.Center)
     }
 
     // Pick Rate
-    Box(modifier = Modifier.weight(1f), contentAlignment = Alignment.Center) {
-      Text(text = stats.pickRate, fontSize = 14.sp, textAlign = TextAlign.Center)
+    Box(modifier = Modifier.weight(Dimensions.MediumWeight), contentAlignment = Alignment.Center) {
+      Text(text = stats.pickRate, fontSize = Dimensions.SmallFontSize, textAlign = TextAlign.Center)
     }
 
     // Ban Rate
-    Box(modifier = Modifier.weight(1f), contentAlignment = Alignment.Center) {
-      Text(text = stats.banRate, fontSize = 14.sp, textAlign = TextAlign.Center)
+    Box(modifier = Modifier.weight(Dimensions.MediumWeight), contentAlignment = Alignment.Center) {
+      Text(text = stats.banRate, fontSize = Dimensions.SmallFontSize, textAlign = TextAlign.Center)
     }
   }
 }

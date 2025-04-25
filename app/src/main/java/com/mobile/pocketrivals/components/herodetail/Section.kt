@@ -9,23 +9,22 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import com.mobile.pocketrivals.ui.theme.Dimensions
 
 @Composable
 fun Section(title: String, content: @Composable () -> Unit) {
   Column(modifier = Modifier.fillMaxWidth()) {
     Text(
       text = title,
-      fontSize = 18.sp,
+      fontSize = Dimensions.MediumFontSize,
       fontWeight = FontWeight.Bold,
       color = MaterialTheme.colorScheme.tertiary,
-      modifier = Modifier.padding(bottom = 8.dp)
+      modifier = Modifier.padding(Dimensions.MediumPadding)
     )
     HorizontalDivider(
       color = MaterialTheme.colorScheme.onBackground,
-      thickness = 1.dp,
-      modifier = Modifier.padding(bottom = 8.dp)
+      thickness = Dimensions.SmallDividerThickness,
+      modifier = Modifier.padding(bottom = Dimensions.MediumPadding)
     )
     content()
   }

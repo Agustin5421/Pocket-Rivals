@@ -11,11 +11,13 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
 import coil.compose.rememberAsyncImagePainter
 import com.mobile.pocketrivals.PocketRivalsScreen
+import com.mobile.pocketrivals.R
 import com.mobile.pocketrivals.data.PatchNote
+import com.mobile.pocketrivals.ui.theme.Dimensions
 
 @Composable
 fun PatchNotesCard(
@@ -24,17 +26,17 @@ fun PatchNotesCard(
   modifier: Modifier = Modifier
 ) {
   // TODO: remove hardcoded baseUrl
-  val baseUrl = "https://marvelrivalsapi.com/rivals"
+  val baseUrl = stringResource(R.string.https_marvelrivalsapi_com_rivals)
   val fullImageUrl = "$baseUrl${patchNotes.imagePath}"
   val imagePainter = rememberAsyncImagePainter(model = fullImageUrl)
 
   Card(
     modifier =
-      modifier.fillMaxWidth().height(230.dp).clickable {
+      modifier.fillMaxWidth().height(Dimensions.PatchCardHeight).clickable {
         navController.navigate("${PocketRivalsScreen.PatchNotes}/${patchNotes.id}")
       },
-    shape = RoundedCornerShape(8.dp),
-    elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+    shape = RoundedCornerShape(Dimensions.MediumRoundedCorner),
+    elevation = CardDefaults.cardElevation(defaultElevation = Dimensions.Elevation)
   ) {
     Image(
       painter = imagePainter,

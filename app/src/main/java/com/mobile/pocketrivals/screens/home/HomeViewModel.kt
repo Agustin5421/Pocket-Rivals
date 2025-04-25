@@ -3,6 +3,7 @@ package com.mobile.pocketrivals.screens.home
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.mobile.pocketrivals.R
 import com.mobile.pocketrivals.apiManager.ApiServiceImpl
 import com.mobile.pocketrivals.data.PatchNote
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -59,6 +60,7 @@ constructor(
         return patchNote
       }
     }
-    throw IllegalArgumentException("Error")
+    // TODO: Handle this case properly
+    throw IllegalArgumentException(context.getString(R.string.error))
   }
 }

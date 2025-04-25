@@ -3,6 +3,7 @@ package com.mobile.pocketrivals.screens.heroes
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.mobile.pocketrivals.R
 import com.mobile.pocketrivals.apiManager.ApiServiceImpl
 import com.mobile.pocketrivals.data.Hero
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -55,7 +56,7 @@ constructor(
         return hero
       }
     }
-    throw IllegalArgumentException("Error")
+    throw IllegalArgumentException(context.getString(R.string.error))
   }
 
   fun getHeroes(): List<Hero> {

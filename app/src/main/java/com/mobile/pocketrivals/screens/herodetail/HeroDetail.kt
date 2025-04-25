@@ -16,8 +16,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.mobile.pocketrivals.components.herodetail.AbilityCard
@@ -27,6 +25,7 @@ import com.mobile.pocketrivals.components.herodetail.MainCard
 import com.mobile.pocketrivals.components.herodetail.Section
 import com.mobile.pocketrivals.screens.heroes.HeroesViewModel
 import com.mobile.pocketrivals.ui.theme.Black10
+import com.mobile.pocketrivals.ui.theme.Dimensions
 import com.mobile.pocketrivals.ui.theme.White
 
 // TODO: make another viewmodel for this screen
@@ -49,12 +48,16 @@ fun HeroDetailScreen(heroId: String?) {
   val scrollState = rememberScrollState()
 
   Column(
-    modifier = Modifier.fillMaxSize().verticalScroll(scrollState).background(White).padding(16.dp)
+    modifier =
+      Modifier.fillMaxSize()
+        .verticalScroll(scrollState)
+        .background(White)
+        .padding(Dimensions.MediumPadding) // Reemplazado 16.dp
   ) {
     // Header
     MainCard(hero)
 
-    Spacer(modifier = Modifier.height(24.dp))
+    Spacer(modifier = Modifier.height(Dimensions.LargeSpacer)) // Reemplazado 24.dp
 
     // Basic Info
     Section(title = "Basic Information") {
@@ -63,40 +66,40 @@ fun HeroDetailScreen(heroId: String?) {
       InfoRow("Member of", hero.team.joinToString(", "))
     }
 
-    Spacer(modifier = Modifier.height(16.dp))
+    Spacer(modifier = Modifier.height(Dimensions.MediumSpacer)) // Reemplazado 16.dp
 
     // Bio
     Section(title = "Biography") {
       Text(
         text = hero.bio,
-        fontSize = 14.sp,
+        fontSize = Dimensions.SmallFontSize, // Reemplazado 14.sp
         color = Black10,
-        modifier = Modifier.padding(vertical = 8.dp)
+        modifier = Modifier.padding(vertical = Dimensions.SmallPadding) // Reemplazado 8.dp
       )
     }
 
-    Spacer(modifier = Modifier.height(16.dp))
+    Spacer(modifier = Modifier.height(Dimensions.MediumSpacer)) // Reemplazado 16.dp
 
     // Abilities
     Section(title = "Abilities") {
       for (ability in hero.abilities) {
         AbilityCard(ability)
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(modifier = Modifier.height(Dimensions.SmallSpacer)) // Reemplazado 8.dp
       }
     }
 
-    Spacer(modifier = Modifier.height(16.dp))
+    Spacer(modifier = Modifier.height(Dimensions.MediumSpacer)) // Reemplazado 16.dp
 
     Section(title = "Lore") {
       Text(
         text = hero.lore,
-        fontSize = 14.sp,
+        fontSize = Dimensions.SmallFontSize, // Reemplazado 14.sp
         color = Black10,
-        modifier = Modifier.padding(vertical = 8.dp)
+        modifier = Modifier.padding(vertical = Dimensions.SmallPadding) // Reemplazado 8.dp
       )
     }
 
-    Spacer(modifier = Modifier.height(32.dp))
+    Spacer(modifier = Modifier.height(Dimensions.ExtraLargeSpacer)) // Reemplazado 32.dp
   }
 }
 

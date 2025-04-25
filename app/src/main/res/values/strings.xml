@@ -1,3 +1,31 @@
 <resources>
     <string name="app_name">Pocket Rivals</string>
+    <string name="new_changes">New changes</string>
+    <string name="summary">Summary</string>
+    <string name="https_marvelrivalsapi_com_rivals">https://marvelrivalsapi.com/rivals</string>
+    <string name="patch_note_not_found">Patch note not found</string>
+    <string name="no_description_available">No description available</string>
+    <string name="difficulty">Difficulty:</string>
+    <string name="bad_request">Bad request</string>
+    <string name="can_t_get_patch_notes">Can\'t get Patch Notes</string>
+    <string name="can_t_get_heroes">Can\'t get heroes</string>
+    <string name="vanguard">vanguard</string>
+    <string name="strategist">strategist</string>
+    <string name="duelist">duelist</string>
+    <string name="real_name">Real name: %1$s</string>
+    <string name="https_marvelrivalsapi_com">https://marvelrivalsapi.com</string>
+    <string name="search_icon">Search Icon</string>
+    <string name="search_by_hero_s_name">Search by hero\'s name</string>
+    <string name="clear">Clear</string>
+    <string name="numeral">#</string>
+    <string name="hero">Hero</string>
+    <string name="role">Role</string>
+    <string name="win">Win %</string>
+    <string name="pick">Pick %</string>
+    <string name="ban">Ban %</string>
+    <string name="configuration">Configuration</string>
+    <string name="pocket_rivals">Pocket Rivals</string>
+    <string name="error">Error</string>
+    <string name="settings_screen">Settings Screen</string>
+    <string name="profile_screen_work_in_progress">Profile Screen, work in progress</string>
 </resources>

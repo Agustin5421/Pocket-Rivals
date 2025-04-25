@@ -14,10 +14,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import com.mobile.pocketrivals.ui.theme.Black10
+import com.mobile.pocketrivals.R
+import com.mobile.pocketrivals.ui.theme.Dimensions
 
 @Composable
 fun DifficultyInfoRow(difficultyString: String) {
@@ -29,15 +29,15 @@ fun DifficultyInfoRow(difficultyString: String) {
     }
 
   Row(
-    modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp),
+    modifier = Modifier.fillMaxWidth().padding(vertical = Dimensions.SmallPadding),
     verticalAlignment = Alignment.CenterVertically
   ) {
     Text(
-      text = "Difficulty:",
-      fontSize = 14.sp,
+      text = stringResource(R.string.difficulty),
+      fontSize = Dimensions.SmallFontSize,
       fontWeight = FontWeight.Bold,
-      color = Black10,
-      modifier = Modifier.width(120.dp)
+      color = MaterialTheme.colorScheme.secondary,
+      modifier = Modifier.width(Dimensions.InfoRowWidth)
     )
 
     Row(verticalAlignment = Alignment.CenterVertically) {
@@ -46,7 +46,7 @@ fun DifficultyInfoRow(difficultyString: String) {
           imageVector = Icons.Filled.Star,
           contentDescription = null,
           tint = MaterialTheme.colorScheme.tertiary,
-          modifier = Modifier.size(14.dp)
+          modifier = Modifier.size(Dimensions.SmallIcon)
         )
       }
 
@@ -54,8 +54,8 @@ fun DifficultyInfoRow(difficultyString: String) {
         Icon(
           imageVector = Icons.Outlined.Star,
           contentDescription = null,
-          tint = Black10.copy(alpha = 0.5f),
-          modifier = Modifier.size(14.dp)
+          tint = MaterialTheme.colorScheme.secondary,
+          modifier = Modifier.size(Dimensions.SmallIcon)
         )
       }
     }

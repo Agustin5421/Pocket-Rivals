@@ -10,9 +10,9 @@ import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.mobile.pocketrivals.data.PatchNote
+import com.mobile.pocketrivals.ui.theme.Dimensions
 
 @Composable
 fun PatchNotesCarousel(
@@ -22,10 +22,10 @@ fun PatchNotesCarousel(
 ) {
   val pagerState = rememberPagerState(pageCount = { newsList.size })
 
-  Box(modifier = modifier.fillMaxWidth().height(250.dp)) {
+  Box(modifier = modifier.fillMaxWidth().height(Dimensions.CarouselHeight)) {
     HorizontalPager(state = pagerState, modifier = Modifier.fillMaxSize()) { page ->
       Box(
-        modifier = Modifier.fillMaxSize().padding(horizontal = 8.dp),
+        modifier = Modifier.fillMaxSize().padding(horizontal = Dimensions.MediumPadding),
         contentAlignment = Alignment.Center
       ) {
         PatchNotesCard(

@@ -26,46 +26,52 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.SolidColor
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import com.mobile.pocketrivals.R
+import com.mobile.pocketrivals.ui.theme.Dimensions
 import com.mobile.pocketrivals.ui.theme.searchBarText
 
 @Composable
 fun HeroSearchBar(text: String, onTextChange: (String) -> Unit) {
   Surface(
-    modifier = Modifier.fillMaxWidth().padding(8.dp).padding(top = 12.dp).height(56.dp),
-    shape = RoundedCornerShape(8.dp),
-    border = BorderStroke(2.dp, MaterialTheme.colorScheme.tertiary),
-    tonalElevation = 4.dp,
+    modifier =
+      Modifier.fillMaxWidth().padding(Dimensions.MediumPadding).height(Dimensions.SearchBarHeight),
+    shape = RoundedCornerShape(Dimensions.MediumRoundedCorner),
+    border = BorderStroke(Dimensions.MediumDividerThickness, MaterialTheme.colorScheme.tertiary),
+    tonalElevation = Dimensions.Elevation,
     color = MaterialTheme.colorScheme.primary
   ) {
     Row(
       verticalAlignment = Alignment.CenterVertically,
-      modifier = Modifier.padding(horizontal = 12.dp, vertical = 8.dp)
+      modifier = Modifier.padding(Dimensions.LargePadding, vertical = Dimensions.MediumPadding)
     ) {
       Icon(
         imageVector = Icons.Default.Search,
-        contentDescription = "Search Icon",
+        contentDescription = stringResource(R.string.search_icon),
         tint = MaterialTheme.colorScheme.searchBarText
       )
 
-      Spacer(modifier = Modifier.width(8.dp))
+      Spacer(modifier = Modifier.width(Dimensions.SmallSpacer))
 
-      Box(modifier = Modifier.weight(1f)) {
+      Box(modifier = Modifier.weight(Dimensions.MediumWeight)) {
         if (text.isEmpty()) {
           Text(
-            text = "Search by hero's name",
+            text = stringResource(R.string.search_by_hero_s_name),
             color = MaterialTheme.colorScheme.searchBarText,
-            fontSize = 16.sp
+            fontSize = Dimensions.MediumFontSize
           )
         }
 
         BasicTextField(
           value = text,
           onValueChange = onTextChange,
-          textStyle = TextStyle(fontSize = 16.sp, color = MaterialTheme.colorScheme.secondary),
+          textStyle =
+            TextStyle(
+              fontSize = Dimensions.MediumFontSize,
+              color = MaterialTheme.colorScheme.secondary
+            ),
           singleLine = true,
           cursorBrush = SolidColor(MaterialTheme.colorScheme.primary),
           modifier = Modifier.fillMaxWidth()
@@ -75,8 +81,9 @@ fun HeroSearchBar(text: String, onTextChange: (String) -> Unit) {
       if (text.isNotEmpty()) {
         Icon(
           imageVector = Icons.Default.Close,
-          contentDescription = "Clear",
-          modifier = Modifier.clickable { onTextChange("") }.padding(start = 8.dp),
+          contentDescription = stringResource(R.string.clear),
+          modifier =
+            Modifier.clickable { onTextChange("") }.padding(start = Dimensions.MediumPadding),
           tint = MaterialTheme.colorScheme.searchBarText
         )
       }

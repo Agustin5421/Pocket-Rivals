@@ -11,21 +11,23 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.res.stringResource
 import coil.compose.rememberAsyncImagePainter
+import com.mobile.pocketrivals.R
+import com.mobile.pocketrivals.ui.theme.Dimensions
 
 @Composable
 fun HeroCard(heroImage: String, onClick: () -> Unit) {
   // TODO: replace with saved string
-  val baseUrl = "https://marvelrivalsapi.com"
+  val baseUrl = stringResource(R.string.https_marvelrivalsapi_com)
   val fullImageUrl = "$baseUrl$heroImage"
   val imagePainter = rememberAsyncImagePainter(model = fullImageUrl)
 
   Box(
-    modifier = Modifier.fillMaxSize().padding(8.dp).clickable { onClick() },
+    modifier = Modifier.fillMaxSize().padding(Dimensions.MediumPadding).clickable { onClick() },
     contentAlignment = Alignment.TopStart
   ) {
-    Card(modifier = Modifier.size(width = 120.dp, height = 120.dp)) {
+    Card(modifier = Modifier.size(width = Dimensions.MediumCard, height = Dimensions.MediumCard)) {
       Image(
         modifier = Modifier.fillMaxSize(),
         contentScale = ContentScale.Crop,

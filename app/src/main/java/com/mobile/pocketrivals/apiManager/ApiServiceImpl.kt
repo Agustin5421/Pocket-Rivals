@@ -37,12 +37,13 @@ class ApiServiceImpl @Inject constructor() {
             val heroes: List<Hero> = response.body()
             onSuccess(heroes)
           } else {
-            onFailure(Exception("Bad request"))
+            onFailure(Exception(context.getString(R.string.bad_request)))
           }
         }
 
         override fun onFailure(t: Throwable?) {
-          Toast.makeText(context, "Can't get heroes", Toast.LENGTH_SHORT).show()
+          Toast.makeText(context, context.getString(R.string.can_t_get_heroes), Toast.LENGTH_SHORT)
+            .show()
           onFail()
           loadingFinished()
         }
@@ -74,12 +75,17 @@ class ApiServiceImpl @Inject constructor() {
             val patchNotes: PatchNotesResponse = response.body()
             onSuccess(patchNotes)
           } else {
-            onFailure(Exception("Bad request"))
+            onFailure(Exception(context.getString(R.string.bad_request)))
           }
         }
 
         override fun onFailure(t: Throwable?) {
-          Toast.makeText(context, "Can't get Patch Notes", Toast.LENGTH_SHORT).show()
+          Toast.makeText(
+              context,
+              context.getString(R.string.can_t_get_patch_notes),
+              Toast.LENGTH_SHORT
+            )
+            .show()
           onFail()
           loadingFinished()
         }

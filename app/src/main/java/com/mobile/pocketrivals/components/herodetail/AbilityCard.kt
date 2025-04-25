@@ -25,69 +25,78 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
+import com.mobile.pocketrivals.R
 import com.mobile.pocketrivals.data.Ability
+import com.mobile.pocketrivals.ui.theme.Dimensions
 
 @Composable
 fun AbilityCard(ability: Ability) {
   if (ability.name == null) return
 
   val heroImage = ability.icon
-  val baseUrl = "https://marvelrivalsapi.com/rivals"
+  val baseUrl = stringResource(R.string.https_marvelrivalsapi_com_rivals)
   val fullImageUrl = "$baseUrl$heroImage"
   var isExpanded by remember { mutableStateOf(false) }
 
   Card(
     modifier = Modifier.fillMaxWidth().clickable { isExpanded = !isExpanded },
-    shape = RoundedCornerShape(8.dp),
-    elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
+    shape = RoundedCornerShape(Dimensions.MediumRoundedCorner),
+    elevation = CardDefaults.cardElevation(Dimensions.CardElevation),
     colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondary)
   ) {
     Column(modifier = Modifier.fillMaxWidth().animateContentSize()) {
       Row(
-        modifier = Modifier.fillMaxWidth().padding(12.dp),
+        modifier = Modifier.fillMaxWidth().padding(Dimensions.LargePadding),
         verticalAlignment = Alignment.CenterVertically
       ) {
         // Ability Icon
         Image(
           painter = rememberAsyncImagePainter(model = fullImageUrl),
           contentDescription = ability.name,
-          modifier = Modifier.size(48.dp).clip(RoundedCornerShape(4.dp))
+          modifier =
+            Modifier.size(Dimensions.MediumIcon)
+              .clip(RoundedCornerShape(Dimensions.SmallRoundedCorner))
         )
 
-        Spacer(modifier = Modifier.width(12.dp))
+        Spacer(modifier = Modifier.width(Dimensions.MediumSpacer))
 
         // Ability Details
-        Column(modifier = Modifier.weight(1f)) {
+        Column(modifier = Modifier.weight(Dimensions.MediumWeight)) {
           Row(verticalAlignment = Alignment.CenterVertically) {
             Text(
               text = ability.name.toString(),
-              fontSize = 16.sp,
+              fontSize = Dimensions.MediumFontSize,
               fontWeight = FontWeight.Bold,
               color = MaterialTheme.colorScheme.primary
             )
 
-            Spacer(modifier = Modifier.width(8.dp))
+            Spacer(modifier = Modifier.width(Dimensions.SmallSpacer))
           }
         }
       }
 
       AnimatedVisibility(visible = isExpanded) {
         Column(
-          modifier = Modifier.fillMaxWidth().padding(start = 12.dp, end = 12.dp, bottom = 12.dp)
+          modifier =
+            Modifier.fillMaxWidth()
+              .padding(
+                start = Dimensions.LargePadding,
+                end = Dimensions.LargePadding,
+                bottom = Dimensions.LargePadding
+              )
         ) {
           HorizontalDivider(
-            modifier = Modifier.padding(vertical = 8.dp),
-            thickness = 2.dp,
-            color = MaterialTheme.colorScheme.primary.copy(alpha = 0.2f)
+            modifier = Modifier.padding(vertical = Dimensions.MediumPadding),
+            thickness = Dimensions.MediumDividerThickness,
+            color = MaterialTheme.colorScheme.primary
           )
 
           Text(
-            text = ability.description ?: "No description available",
-            fontSize = 14.sp,
+            text = ability.description ?: stringResource(R.string.no_description_available),
+            fontSize = Dimensions.SmallFontSize,
             color = MaterialTheme.colorScheme.onSecondary
           )
         }
