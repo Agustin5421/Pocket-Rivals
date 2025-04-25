@@ -26,7 +26,8 @@ private val LightColorScheme = lightColorScheme(
     onPrimary = LightBlue,
     onSecondary = Grey10,
     onSurface = Color.Gray,
-
+    onBackground = LightBlack,
+    surface = White,
 
 
     /* Other default colors to override

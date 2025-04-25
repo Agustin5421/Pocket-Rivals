@@ -1,5 +1,6 @@
 package com.mobile.pocketrivals.components.home
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.LazyColumn
@@ -21,20 +22,18 @@ import com.mobile.pocketrivals.R
 @Composable
 fun HeroTierList(modifier: Modifier = Modifier, heroStats: List<HeroStats>) {
     Surface(
-        modifier = modifier.fillMaxWidth()
+        modifier = modifier.fillMaxWidth().background(MaterialTheme.colorScheme.onPrimary),
     ) {
         CompositionLocalProvider(LocalTextStyle provides TextStyle(color = Color.Black)) {
             Column {
-                // Encabezado de la tabla
                 HeroTierListHeader()
 
-                // Divider
                 HorizontalDivider(
                     color = MaterialTheme.colorScheme.surfaceVariant,
                     thickness = 1.dp
                 )
                 // Hero List
-                LazyColumn {
+                LazyColumn() {
                     items(heroStats) { heroStat ->
                         HeroTierListItem(stats = heroStat)
                         HorizontalDivider(

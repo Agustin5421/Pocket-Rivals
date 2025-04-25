@@ -41,6 +41,4 @@ fun HeroesScreen(navController: NavController) {
         )
         HeroCardMap(heroes = filteredHeroes, navController)
     }
-
-
 }

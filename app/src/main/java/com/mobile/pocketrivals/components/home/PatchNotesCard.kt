@@ -19,12 +19,18 @@ import com.mobile.pocketrivals.mocks.PatchNotes
 
 
 @Composable
-fun PatchNotesCard(patchNotes: PatchNotes, navController: NavController, modifier: Modifier = Modifier) {
+fun PatchNotesCard(
+    patchNotes: PatchNotes,
+    navController: NavController,
+    modifier: Modifier = Modifier
+) {
     Card(
         modifier = modifier
             .fillMaxWidth()
-            .height(250.dp)
-            .clickable { navController.navigate("${PocketRivalsScreen.PatchNotes}/${patchNotes.id}") },
+            .height(230.dp)
+            .clickable {
+                navController.navigate("${PocketRivalsScreen.PatchNotes}/${patchNotes.id}")
+            },
         shape = RoundedCornerShape(8.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
     ) {
