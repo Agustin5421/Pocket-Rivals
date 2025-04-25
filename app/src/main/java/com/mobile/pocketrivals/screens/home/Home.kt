@@ -19,9 +19,9 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import com.mobile.pocketrivals.R
-import com.mobile.pocketrivals.components.home.HeroStats
-import com.mobile.pocketrivals.components.home.HeroTierList
-import com.mobile.pocketrivals.components.home.PatchNotesCarousel
+import com.mobile.pocketrivals.components.home.news.PatchNotesCarousel
+import com.mobile.pocketrivals.components.home.tierlist.HeroStats
+import com.mobile.pocketrivals.components.home.tierlist.HeroTierList
 import com.mobile.pocketrivals.ui.theme.Dimensions
 
 @Composable

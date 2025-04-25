@@ -1,4 +1,4 @@
-package com.mobile.pocketrivals.components.home
+package com.mobile.pocketrivals.components.home.tierlist
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column

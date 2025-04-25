@@ -27,10 +27,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import coil.compose.rememberAsyncImagePainter
 import com.mobile.pocketrivals.R
 import com.mobile.pocketrivals.data.Ability
 import com.mobile.pocketrivals.ui.theme.Dimensions
+import com.mobile.pocketrivals.ui.theme.PocketRivalsTheme
 
 @Composable
 fun AbilityCard(ability: Ability) {
@@ -103,4 +105,22 @@ fun AbilityCard(ability: Ability) {
       }
     }
   }
+}
+
+@Composable
+@Preview
+fun AbilityCardPreview() {
+  val ability =
+    Ability(
+      id = 1,
+      name = "Test Ability",
+      description = "This is a test ability description.",
+      icon = "https://marvelrivalsapi.com/rivals/abilities/101131.webp",
+      type = "Active",
+      isCollab = true,
+      additionalFields = null,
+      transformationId = "1",
+    )
+
+  PocketRivalsTheme { AbilityCard(ability) }
 }

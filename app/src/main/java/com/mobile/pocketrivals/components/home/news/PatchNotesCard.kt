@@ -1,4 +1,4 @@
-package com.mobile.pocketrivals.components.home
+package com.mobile.pocketrivals.components.home.news
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable

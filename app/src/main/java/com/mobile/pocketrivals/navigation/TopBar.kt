@@ -1,4 +1,4 @@
-package com.mobile.pocketrivals.components.home
+package com.mobile.pocketrivals.navigation
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.ExperimentalMaterial3Api

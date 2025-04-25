@@ -8,7 +8,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.font.FontWeight
 import com.mobile.pocketrivals.ui.theme.Dimensions
 
 @Composable
@@ -16,8 +15,7 @@ fun Section(title: String, content: @Composable () -> Unit) {
   Column(modifier = Modifier.fillMaxWidth()) {
     Text(
       text = title,
-      fontSize = Dimensions.MediumFontSize,
-      fontWeight = FontWeight.Bold,
+      style = MaterialTheme.typography.titleMedium,
       color = MaterialTheme.colorScheme.tertiary,
       modifier = Modifier.padding(Dimensions.MediumPadding)
     )

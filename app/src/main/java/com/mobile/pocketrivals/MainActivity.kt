@@ -8,8 +8,8 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.compose.rememberNavController
-import com.mobile.pocketrivals.components.home.TopBar
 import com.mobile.pocketrivals.navigation.NavHostComposable
+import com.mobile.pocketrivals.navigation.TopBar
 import com.mobile.pocketrivals.navigation.bottomNavBar.BottomBar
 import com.mobile.pocketrivals.ui.theme.PocketRivalsTheme
 import dagger.hilt.android.AndroidEntryPoint

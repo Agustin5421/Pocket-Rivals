@@ -25,8 +25,8 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.mobile.pocketrivals.R
 import com.mobile.pocketrivals.components.herodetail.AbilityCard
 import com.mobile.pocketrivals.components.herodetail.DifficultyInfoRow
+import com.mobile.pocketrivals.components.herodetail.HeroMainCard
 import com.mobile.pocketrivals.components.herodetail.InfoRow
-import com.mobile.pocketrivals.components.herodetail.MainCard
 import com.mobile.pocketrivals.components.herodetail.Section
 import com.mobile.pocketrivals.data.Hero
 import com.mobile.pocketrivals.screens.heroes.HeroesViewModel
@@ -75,7 +75,7 @@ fun HeroDetailContent(hero: Hero) {
         .padding(Dimensions.MediumPadding)
   ) {
     // Header
-    MainCard(hero)
+    HeroMainCard(hero)
 
     Spacer(modifier = Modifier.height(Dimensions.LargeSpacer))
 
@@ -92,7 +92,7 @@ fun HeroDetailContent(hero: Hero) {
     Section(title = stringResource(R.string.biography)) {
       Text(
         text = hero.bio,
-        fontSize = Dimensions.SmallFontSize,
+        style = MaterialTheme.typography.bodyLarge,
         color = MaterialTheme.colorScheme.secondary,
         modifier = Modifier.padding(vertical = Dimensions.SmallPadding)
       )
@@ -114,7 +114,7 @@ fun HeroDetailContent(hero: Hero) {
     Section(title = stringResource(R.string.lore)) {
       Text(
         text = hero.lore,
-        fontSize = Dimensions.SmallFontSize,
+        style = MaterialTheme.typography.bodyLarge,
         color = MaterialTheme.colorScheme.secondary,
         modifier = Modifier.padding(vertical = Dimensions.SmallPadding)
       )

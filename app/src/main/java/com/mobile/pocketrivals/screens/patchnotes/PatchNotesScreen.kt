@@ -53,8 +53,8 @@ fun PatchNotesScreen(patchNotesId: String?) {
       )
     } else if (retry) {
       Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        Text("There was an error")
-        Button(onClick = viewModel::retryApiCall) { Text("Retry") }
+        Text(stringResource(R.string.there_was_an_error))
+        Button(onClick = viewModel::retryApiCall) { Text(stringResource(R.string.retry)) }
       }
     } else if (patch == null) {
       Text(text = stringResource(R.string.patch_note_not_found), color = Color.Red)
@@ -75,21 +75,6 @@ fun PatchNoteDetailContent(patchNote: PatchNote) {
         .padding(bottom = Dimensions.MediumPadding)
         .padding(horizontal = Dimensions.MediumPadding),
   ) {
-    Text(
-      text = patchNote.title,
-      fontSize = Dimensions.LargeFontSize,
-      fontWeight = FontWeight.Bold,
-      color = MaterialTheme.colorScheme.primary,
-      modifier = Modifier.padding(bottom = Dimensions.SmallPadding)
-    )
-
-    Text(
-      text = "Date: ${patchNote.date}",
-      fontSize = Dimensions.SmallFontSize,
-      color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f),
-      modifier = Modifier.padding(bottom = Dimensions.MediumPadding)
-    )
-
     val baseUrl = stringResource(R.string.https_marvelrivalsapi_com_rivals)
     val fullImageUrl = "$baseUrl${patchNote.imagePath}"
     val imagePainter = rememberAsyncImagePainter(model = fullImageUrl)
@@ -103,10 +88,29 @@ fun PatchNoteDetailContent(patchNote: PatchNote) {
       Image(
         painter = imagePainter,
         contentDescription = patchNote.title,
-        modifier = Modifier.fillMaxSize().clip(RoundedCornerShape(Dimensions.SmallRoundedCorner)),
+        modifier =
+          Modifier.fillMaxSize()
+            .clip(RoundedCornerShape(Dimensions.SmallRoundedCorner))
+            .padding(top = Dimensions.LargePadding),
         contentScale = ContentScale.Crop
       )
     }
+
+    Text(
+      text = patchNote.title,
+      style = MaterialTheme.typography.titleMedium,
+      fontWeight = FontWeight.Bold,
+      color = MaterialTheme.colorScheme.secondary,
+      modifier =
+        Modifier.padding(top = Dimensions.LargePadding).padding(bottom = Dimensions.MediumPadding)
+    )
+
+    Text(
+      text = stringResource(R.string.date, patchNote.date),
+      fontSize = Dimensions.SmallFontSize,
+      color = MaterialTheme.colorScheme.onSurface,
+      modifier = Modifier.padding(bottom = Dimensions.MediumPadding)
+    )
 
     Section(title = stringResource(R.string.summary)) {
       Text(
@@ -120,62 +124,13 @@ fun PatchNoteDetailContent(patchNote: PatchNote) {
     Spacer(modifier = Modifier.height(Dimensions.MediumSpacer))
 
     Section(title = stringResource(R.string.new_changes)) {
-      val sections = parseFullContent(patchNote.fullContent)
-
-      sections.forEach { (sectionTitle, sectionContent) ->
-        if (sectionTitle.isNotEmpty()) {
-          Text(
-            text = sectionTitle,
-            fontSize = Dimensions.MediumFontSize,
-            fontWeight = FontWeight.Bold,
-            color = MaterialTheme.colorScheme.secondary,
-            modifier =
-              Modifier.padding(top = Dimensions.MediumPadding, bottom = Dimensions.SmallPadding)
-          )
-        }
-
-        Text(
-          text = sectionContent,
-          fontSize = Dimensions.SmallFontSize,
-          color = MaterialTheme.colorScheme.onBackground,
-          lineHeight = Dimensions.MediumFontSize
-        )
-      }
+      Text(
+        text = patchNote.fullContent,
+        style = MaterialTheme.typography.bodyLarge,
+        color = MaterialTheme.colorScheme.onBackground,
+      )
     }
 
     Spacer(modifier = Modifier.height(Dimensions.LargeSpacer))
   }
-}
-
-private fun parseFullContent(fullContent: String): List<Pair<String, String>> {
-  val sections = mutableListOf<Pair<String, String>>()
-  val lines = fullContent.split("\n")
-
-  var currentTitle = ""
-  var currentContent = StringBuilder()
-
-  lines.forEach { line ->
-    when {
-      line.trim().isNotEmpty() && line.trim() == line.trim().uppercase() && !line.contains(" ") -> {
-        if (currentContent.isNotEmpty()) {
-          sections.add(Pair(currentTitle, currentContent.toString().trim()))
-          currentContent = StringBuilder()
-        }
-        currentTitle = line.trim()
-      }
-      else -> {
-        if (line.trim().isNotEmpty()) {
-          currentContent.append(line.trim()).append("\n")
-        } else if (currentContent.isNotEmpty()) {
-          currentContent.append("\n")
-        }
-      }
-    }
-  }
-
-  if (currentContent.isNotEmpty()) {
-    sections.add(Pair(currentTitle, currentContent.toString().trim()))
-  }
-
-  return sections
 }

@@ -27,7 +27,7 @@ import com.mobile.pocketrivals.screens.herodetail.toTitleCase
 import com.mobile.pocketrivals.ui.theme.Dimensions
 
 @Composable
-fun MainCard(hero: Hero) {
+fun HeroMainCard(hero: Hero) {
   Row(
     modifier = Modifier.fillMaxWidth().height(Dimensions.MediumCard),
     verticalAlignment = Alignment.CenterVertically
