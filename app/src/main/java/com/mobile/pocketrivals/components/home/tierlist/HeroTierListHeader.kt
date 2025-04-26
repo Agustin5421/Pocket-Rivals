@@ -34,7 +34,7 @@ fun HeroTierListHeader() {
   Row(
     modifier =
       Modifier.fillMaxWidth()
-        .background(MaterialTheme.colorScheme.onBackground)
+        .background(MaterialTheme.colorScheme.onPrimary)
         .padding(vertical = Dimensions.MediumPadding, horizontal = Dimensions.MediumPadding),
     verticalAlignment = Alignment.CenterVertically
   ) {

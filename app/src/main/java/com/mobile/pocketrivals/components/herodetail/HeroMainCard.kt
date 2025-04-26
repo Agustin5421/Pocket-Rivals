@@ -7,9 +7,12 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -28,59 +31,70 @@ import com.mobile.pocketrivals.ui.theme.Dimensions
 
 @Composable
 fun HeroMainCard(hero: Hero) {
-  Row(
-    modifier = Modifier.fillMaxWidth().height(Dimensions.MediumCard),
-    verticalAlignment = Alignment.CenterVertically
+
+  Card(
+    modifier =
+      Modifier.fillMaxWidth()
+        .padding(horizontal = Dimensions.SmallPadding)
+        .padding(top = Dimensions.MediumPadding),
+    shape = RoundedCornerShape(Dimensions.ExtraLargePadding),
+    colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+    elevation = CardDefaults.cardElevation(defaultElevation = Dimensions.MediumPadding)
   ) {
-    // Hero Image
-    Box(
-      modifier =
-        Modifier.size(Dimensions.MediumImage)
-          .clip(RoundedCornerShape(Dimensions.MediumRoundedCorner))
+    Row(
+      modifier = Modifier.fillMaxWidth().height(Dimensions.MediumCard),
+      verticalAlignment = Alignment.CenterVertically
     ) {
-      HeroCard(hero.imageUrl, onClick = {})
-    }
-    Spacer(modifier = Modifier.width(Dimensions.MediumSpacer))
+      // Hero Image
+      Box(
+        modifier =
+          Modifier.size(Dimensions.MediumImage)
+            .clip(RoundedCornerShape(Dimensions.MediumRoundedCorner))
+      ) {
+        HeroCard(hero.imageUrl, onClick = {})
+      }
+      Spacer(modifier = Modifier.width(Dimensions.MediumSpacer))
 
-    // Hero Name and Role
-    Column(verticalArrangement = Arrangement.Center) {
-      Text(
-        text = hero.name.toTitleCase(),
-        fontSize = Dimensions.LargeFontSize,
-        fontWeight = FontWeight.Bold,
-        color = MaterialTheme.colorScheme.secondary
-      )
-      Spacer(modifier = Modifier.height(Dimensions.MediumSpacer))
-
-      Row(verticalAlignment = Alignment.CenterVertically) {
-        // Role icon
-        val iconResource =
-          when (hero.role.lowercase()) {
-            stringResource(R.string.vanguard) -> R.drawable.vanguard_image
-            stringResource(R.string.strategist) -> R.drawable.strategist_image
-            stringResource(R.string.duelist) -> R.drawable.dps_image
-            else -> R.drawable.mock_hero_image
-          }
-
-        Icon(
-          painter = painterResource(iconResource),
-          contentDescription = hero.role,
-          tint = MaterialTheme.colorScheme.secondary,
-          modifier = Modifier.size(Dimensions.MediumIcon)
-        )
-
-        Spacer(modifier = Modifier.width(Dimensions.MediumSpacer))
+      // Hero Name and Role
+      Column(verticalArrangement = Arrangement.Center) {
         Text(
-          text = hero.role,
-          fontSize = Dimensions.MediumFontSize,
+          text = hero.name.toTitleCase(),
+          fontSize = Dimensions.LargeFontSize,
+          fontWeight = FontWeight.Bold,
+          color = MaterialTheme.colorScheme.secondary
+        )
+        Spacer(modifier = Modifier.height(Dimensions.MediumSpacer))
+
+        Row(verticalAlignment = Alignment.CenterVertically) {
+          // Role icon
+          val iconResource =
+            when (hero.role.lowercase()) {
+              stringResource(R.string.vanguard) -> R.drawable.vanguard_image
+              stringResource(R.string.strategist) -> R.drawable.strategist_image
+              stringResource(R.string.duelist) -> R.drawable.dps_image
+              else -> R.drawable.mock_hero_image
+            }
+
+          Icon(
+            painter = painterResource(iconResource),
+            contentDescription = hero.role,
+            tint = MaterialTheme.colorScheme.secondary,
+            modifier = Modifier.size(Dimensions.MediumIcon)
+          )
+
+          Spacer(modifier = Modifier.width(Dimensions.MediumSpacer))
+          Text(
+            text = hero.role,
+            fontSize = Dimensions.MediumFontSize,
+            color = MaterialTheme.colorScheme.secondary
+          )
+        }
+        Text(
+          text = stringResource(R.string.real_name, hero.realName),
+          fontSize = Dimensions.SmallFontSize,
           color = MaterialTheme.colorScheme.secondary
         )
       }
-      Text(
-        text = stringResource(R.string.real_name, hero.realName),
-        fontSize = Dimensions.SmallFontSize,
-        color = MaterialTheme.colorScheme.secondary
-      )
     }
   }
 }

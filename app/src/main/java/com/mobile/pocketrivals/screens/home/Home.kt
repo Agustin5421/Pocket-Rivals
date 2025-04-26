@@ -51,7 +51,6 @@ fun HomeScreen(navController: NavController) {
         ) {
           PatchNotesCarousel(patchNotes, navController = navController)
 
-          // TODO: add more mock data and move it to a viewmodel
           HeroTierList(modifier = Modifier, mockHeroStats)
         }
       }
@@ -66,35 +65,35 @@ val mockHeroStats =
       championName = "hero",
       championIconResId = R.drawable.mock_hero_image,
       roleIconResId = R.drawable.dps_image,
-      winRate = "1",
-      pickRate = "1",
-      banRate = "1"
+      winRate = "55.31%",
+      pickRate = "42.31%",
+      banRate = "22.09%"
     ),
     HeroStats(
-      rank = 1,
+      rank = 2,
       championName = "hero",
-      championIconResId = R.drawable.mock_hero_image,
-      roleIconResId = R.drawable.dps_image,
-      winRate = "1",
-      pickRate = "1",
-      banRate = "1"
+      championIconResId = R.drawable.loki_image_mock,
+      roleIconResId = R.drawable.strategist_image,
+      winRate = "52.31%",
+      pickRate = "37.31%",
+      banRate = "23.09%"
     ),
     HeroStats(
-      rank = 1,
+      rank = 3,
       championName = "hero",
-      championIconResId = R.drawable.mock_hero_image,
-      roleIconResId = R.drawable.dps_image,
-      winRate = "1",
-      pickRate = "1",
-      banRate = "1"
+      championIconResId = R.drawable.knull_mock,
+      roleIconResId = R.drawable.vanguard_image,
+      winRate = "50.31%",
+      pickRate = "43.09%",
+      banRate = "21.09%"
     ),
     HeroStats(
-      rank = 1,
+      rank = 4,
       championName = "hero",
-      championIconResId = R.drawable.mock_hero_image,
+      championIconResId = R.drawable.daredevil_image_mock,
       roleIconResId = R.drawable.dps_image,
-      winRate = "1",
-      pickRate = "1",
-      banRate = "1"
+      winRate = "32.31%",
+      pickRate = "21.31%",
+      banRate = "11.09%"
     )
   )

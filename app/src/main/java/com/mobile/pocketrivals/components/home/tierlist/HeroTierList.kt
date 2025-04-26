@@ -54,8 +54,17 @@ fun PreviewHeroTierList() {
     listOf(
       HeroStats(
         rank = 1,
-        championName = "Adam Warlock",
-        championIconResId = R.drawable.mock_hero_image,
+        championName = "Knull",
+        championIconResId = R.drawable.knull_mock,
+        roleIconResId = R.drawable.dps_image,
+        winRate = "54.31%",
+        pickRate = "10.69%",
+        banRate = "43.09%"
+      ),
+      HeroStats(
+        rank = 1,
+        championName = "Daredevil",
+        championIconResId = R.drawable.daredevil_image_mock,
         roleIconResId = R.drawable.dps_image,
         winRate = "54.31%",
         pickRate = "10.69%",
@@ -64,17 +73,8 @@ fun PreviewHeroTierList() {
       HeroStats(
         rank = 1,
         championName = "Adam Warlock",
-        championIconResId = R.drawable.mock_hero_image,
-        roleIconResId = R.drawable.dps_image,
-        winRate = "54.31%",
-        pickRate = "10.69%",
-        banRate = "43.09%"
-      ),
-      HeroStats(
-        rank = 1,
-        championName = "Adam Warlock",
-        championIconResId = R.drawable.mock_hero_image,
-        roleIconResId = R.drawable.dps_image,
+        championIconResId = R.drawable.loki_image_mock,
+        roleIconResId = R.drawable.vanguard_image,
         winRate = "54.31%",
         pickRate = "10.69%",
         banRate = "43.09%"
