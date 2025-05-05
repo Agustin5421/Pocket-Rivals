@@ -1,8 +1,12 @@
 package com.mobile.pocketrivals.data
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
+@Entity(tableName = "heroes")
 data class Hero(
+  @PrimaryKey
   @SerializedName("id") val id: String,
   @SerializedName("name") val name: String,
   @SerializedName("real_name") val realName: String,
@@ -18,7 +22,9 @@ data class Hero(
   @SerializedName("abilities") val abilities: List<Ability>
 )
 
+@Entity(tableName = "transformations")
 data class Transformation(
+  @PrimaryKey
   @SerializedName("id") val id: String,
   @SerializedName("name") val name: String,
   @SerializedName("icon") val icon: String,
@@ -26,7 +32,9 @@ data class Transformation(
   @SerializedName("movement_speed") val movementSpeed: String?
 )
 
+@Entity(tableName = "costumes")
 data class Costume(
+  @PrimaryKey
   @SerializedName("id") val id: String,
   @SerializedName("name") val name: String,
   @SerializedName("icon") val icon: String,
@@ -35,7 +43,9 @@ data class Costume(
   @SerializedName("appearance") val appearance: String
 )
 
+@Entity(tableName = "abilities")
 data class Ability(
+  @PrimaryKey
   @SerializedName("id") val id: Int,
   @SerializedName("icon") val icon: String,
   @SerializedName("name") val name: String?,
@@ -46,7 +56,9 @@ data class Ability(
   @SerializedName("transformation_id") val transformationId: String
 )
 
+@Entity(tableName = "additional_fields")
 data class AdditionalFields(
+  @PrimaryKey(autoGenerate = true) val id: Int = 0,
   @SerializedName("Key") val key: String?,
   @SerializedName("Casting") val casting: String?,
   @SerializedName("Energy Cost") val energyCost: String?,
