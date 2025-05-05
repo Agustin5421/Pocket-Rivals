@@ -15,8 +15,8 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -29,20 +29,21 @@ import com.mobile.pocketrivals.components.herodetail.HeroMainCard
 import com.mobile.pocketrivals.components.herodetail.InfoRow
 import com.mobile.pocketrivals.components.herodetail.Section
 import com.mobile.pocketrivals.data.Hero
-import com.mobile.pocketrivals.screens.heroes.HeroesViewModel
 import com.mobile.pocketrivals.ui.theme.Dimensions
 
-// TODO: make another viewmodel for this screen
-// TODO: should do a switch for heroes who have more than 1 form
 @Composable
 fun HeroDetailScreen(heroId: String?) {
-  val viewModel = hiltViewModel<HeroesViewModel>()
-  val heroes by viewModel.heroes.collectAsStateWithLifecycle()
+  val viewModel = hiltViewModel<HeroDetailViewModel>()
 
+  val hero by viewModel.hero.collectAsStateWithLifecycle()
   val loading by viewModel.loading.collectAsStateWithLifecycle()
   val retry by viewModel.showRetry.collectAsStateWithLifecycle()
 
-  val hero = remember(heroId, heroes) { heroes.find { it.id == heroId } }
+  LaunchedEffect(heroId) {
+    if (heroId != null) {
+      viewModel.loadHeroById(heroId)
+    }
+  }
 
   Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
     if (loading) {
@@ -53,12 +54,15 @@ fun HeroDetailScreen(heroId: String?) {
     } else if (retry) {
       Column(horizontalAlignment = Alignment.CenterHorizontally) {
         Text(stringResource(R.string.there_was_an_error))
-        Button(onClick = viewModel::retryApiCall) { Text(stringResource(R.string.retry)) }
-      }
+        Button(onClick = { heroId?.let { viewModel.retryApiCall(it) } }) {
+          Text(stringResource(R.string.retry))
+        }      }
     } else if (hero == null) {
       Text(stringResource(R.string.hero_not_found), color = MaterialTheme.colorScheme.secondary)
     } else {
-      HeroDetailContent(hero)
+      if (hero != null) {
+        HeroDetailContent(hero!!)
+      }
     }
   }
 }

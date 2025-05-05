@@ -3,21 +3,16 @@ package com.mobile.pocketrivals.screens.heroes
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.mobile.pocketrivals.R
 import com.mobile.pocketrivals.apiManager.ApiServiceImpl
 import com.mobile.pocketrivals.data.Hero
 import com.mobile.pocketrivals.storage.PocketRivalsDatabase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
-import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-//TODO: heroes screen view model should be split into two view models
-// one for the list of heroes and one for the hero details
-// this will make the code cleaner and easier to maintain
-// since hero details will always be fetched from the database
 @HiltViewModel
 class HeroesViewModel
 @Inject
@@ -60,7 +55,7 @@ constructor(
             fetchHeroesFromApi()
           }
         }
-      } catch (e: Exception) {
+      } catch (_: Exception) {
         // Handle database errors
         _showRetry.value = true
         _loading.value = false
@@ -82,15 +77,6 @@ constructor(
       onFail = { _showRetry.value = true },
       loadingFinished = { _loading.value = false }
     )
-  }
-
-  fun getHeroById(heroId: String?): Hero {
-    for (hero in _heroes.value) {
-      if (hero.id == heroId) {
-        return hero
-      }
-    }
-    throw IllegalArgumentException(context.getString(R.string.error))
   }
 
   fun getHeroes(): List<Hero> {

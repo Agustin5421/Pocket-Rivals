@@ -21,4 +21,7 @@ interface HeroDao {
 
     @Query("SELECT * FROM heroes")
     fun getAllHeroes(): LiveData<List<Hero>>
+
+    @Query("SELECT * FROM heroes WHERE id = :heroId LIMIT 1")
+    suspend fun getHeroById(heroId: String): Hero?
 }
