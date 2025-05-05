@@ -9,7 +9,7 @@ import androidx.room.Update
 
 
 @Dao
-interface HeroesDao {
+interface HeroDao {
     @Insert
     suspend fun insert(heroes: Hero)
 
