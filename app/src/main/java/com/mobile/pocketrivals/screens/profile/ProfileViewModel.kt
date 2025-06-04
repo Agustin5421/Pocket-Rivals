@@ -3,6 +3,7 @@ package com.mobile.pocketrivals.screens.profile
 import android.content.Context
 import android.os.Build
 import android.util.Log
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.credentials.Credential
 import androidx.credentials.CredentialManager
@@ -18,6 +19,7 @@ import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential.Co
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.mobile.pocketrivals.R
+import com.mobile.pocketrivals.security.BiometricAuthManager
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -30,12 +32,15 @@ const val TAG = "UserViewModel"
 @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
 @HiltViewModel
 class ProfileViewModel @Inject constructor(
+    private val biometricAuthManager: BiometricAuthManager
 ): ViewModel() {
-
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
 
     private val _userData = MutableStateFlow(auth.currentUser)
     val userData = _userData.asStateFlow()
+
+    private var _isAuthenticated = MutableStateFlow(false)
+    val isAuthenticated = _isAuthenticated.asStateFlow()
 
     // Accept the Activity context here
     fun launchCredentialManager(activityContext: Context) {
@@ -118,5 +123,22 @@ class ProfileViewModel @Inject constructor(
                 Log.e(TAG, "Couldn't clear user credentials: ${e.localizedMessage}")
             }
         }
+    }
+
+    fun authenticate(context: Context) {
+        biometricAuthManager.authenticate(
+            context,
+            onError = {
+                _isAuthenticated.value = false
+                Toast.makeText(context, "There was an error in the authentication", Toast.LENGTH_SHORT).show()
+            },
+            onSuccess = {
+                _isAuthenticated.value = true
+            },
+            onFail = {
+                _isAuthenticated.value = false
+                Toast.makeText(context, "The authentication failed, try again", Toast.LENGTH_SHORT).show()
+            }
+        )
     }
 }

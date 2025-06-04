@@ -1,5 +1,7 @@
 package com.mobile.pocketrivals.navigation
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -19,6 +21,7 @@ import com.mobile.pocketrivals.screens.patchnotes.PatchNotesScreen
 import com.mobile.pocketrivals.screens.profile.ProfileScreen
 import com.mobile.pocketrivals.screens.settings.SettingsScreen
 
+@RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
 @Composable
 fun NavHostComposable(innerPadding: PaddingValues, navController: NavHostController) {
   NavHost(

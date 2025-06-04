@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
 import com.mobile.pocketrivals.R
+import com.mobile.pocketrivals.components.home.NotificationButton
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -23,7 +24,7 @@ fun TopBar(navController: NavController) {
       )
     },
     actions = {
-      // SettingsButton(navController)
+      NotificationButton(navController)
     },
     modifier = Modifier.fillMaxWidth(),
     colors = TopAppBarDefaults.topAppBarColors(containerColor = MaterialTheme.colorScheme.secondary)
