@@ -64,3 +64,35 @@ data class AdditionalFields(
   @SerializedName("Energy Cost") val energyCost: String?,
   @SerializedName("Special Effect") val specialEffect: String?
 )
+
+// Profile entities
+
+data class UserData(
+  val displayName: String?,
+  val email: String?,
+  val photoUrl: String?
+)
+
+data class PlayerProfile(
+  val uid: String,
+  val name: String,
+  val player: Player,
+  val matchHistory: List<MatchHistory>,
+  val rankHistory: List<RankHistory>,
+  val heroMatchups: List<HeroMatchup>
+)
+
+data class Player(
+  val playerId: String,
+  val nickname: String,
+  val isPrivate: Boolean
+)
+
+data class MatchHistory(
+  val matchId: String,
+  val date: String,
+  val result: String,
+  val kills: Int,
+  val deaths: Int,
+  val assists: Int
+)
