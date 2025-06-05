@@ -26,7 +26,7 @@ class NotificationReceiver : BroadcastReceiver() {
         val notification = NotificationCompat.Builder(context, notificationChannelID)
             .setContentTitle(context.getString(R.string.ultron_has_arrived))
             .setContentText(context.getString(R.string.check_out_the_latest_patch_notes))
-            .setSmallIcon(R.drawable.mk)
+            .setSmallIcon(R.drawable.loki_svgrepo_com)
             .setPriority(NotificationManager.IMPORTANCE_HIGH)
             .setContentIntent(pendingIntent)
             .setAutoCancel(true)
