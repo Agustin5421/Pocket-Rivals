@@ -21,6 +21,7 @@ import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.mobile.pocketrivals.R
+import com.mobile.pocketrivals.ui.theme.Dimensions
 
 @Composable
 fun BottomBar(navController: NavHostController) {
@@ -58,13 +59,13 @@ fun RowScope.AddItem(
         Icon(
           painter = painterResource(id = screen.iconRes),
           contentDescription = stringResource(R.string.navigation_icon),
-          modifier = Modifier.size(24.dp)
+          modifier = Modifier.size(Dimensions.GoogleButtonIcon)
         )
       } else {
         Icon(
           imageVector = screen.icon,
           contentDescription = stringResource(R.string.navigation_icon),
-          modifier = Modifier.size(24.dp)
+          modifier = Modifier.size(Dimensions.GoogleButtonIcon)
         )
       }
     },

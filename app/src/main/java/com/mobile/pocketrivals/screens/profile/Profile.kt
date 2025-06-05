@@ -1,91 +1,130 @@
 package com.mobile.pocketrivals.screens.profile
 
 import android.app.Activity
-import android.hardware.biometrics.BiometricManager.Authenticators.BIOMETRIC_STRONG
-import android.hardware.biometrics.BiometricManager.Authenticators.DEVICE_CREDENTIAL
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricManager.Authenticators.BIOMETRIC_STRONG
 import androidx.biometric.BiometricManager.Authenticators.DEVICE_CREDENTIAL
-import androidx.compose.foundation.*
-import androidx.compose.foundation.layout.*
-import androidx.compose.material.icons.filled.*
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import java.util.*
+import com.mobile.pocketrivals.components.profile.ProfileContent
+import com.mobile.pocketrivals.components.profile.UidInputCard
+import com.mobile.pocketrivals.components.profile.UserInfoCard
+import com.mobile.pocketrivals.ui.theme.Dimensions.ExtraLargePadding
 
 @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
 @Composable
 fun ProfileScreen() {
   val viewModel = hiltViewModel<ProfileViewModel>()
   val userData = viewModel.userData.collectAsStateWithLifecycle()
-  val profileData = viewModel.profileData.collectAsStateWithLifecycle()
-  val isLoadingProfile = viewModel.isLoadingProfile.collectAsStateWithLifecycle()
-
   val context = LocalContext.current
   val activityContext = context as Activity
-
   val isAuthenticated by viewModel.isAuthenticated.collectAsStateWithLifecycle()
 
-  LaunchedEffect(Unit) {
-    viewModel.authenticate(context)
-  }
-
   val biometricManager = remember { BiometricManager.from(context) }
-
-  val isBiometricAvailable = remember {
+  val canAuthenticate = remember {
     biometricManager.canAuthenticate(BIOMETRIC_STRONG or DEVICE_CREDENTIAL)
   }
 
-  when (isBiometricAvailable) {
-    BiometricManager.BIOMETRIC_SUCCESS -> {
-      if (isAuthenticated) {
-        if (userData.value == null) {
-          // Show Google Login
-          LoginScreen(
-            onGoogleLoginClick = { viewModel.launchCredentialManager(activityContext) }
-          )
-        } else {
-          // Show Profile Screen with UID input
-          AuthenticatedProfileScreen(
-            userData = userData.value!!,
-            profileData = profileData.value,
-            isLoadingProfile = isLoadingProfile.value,
-            onSignOut = { viewModel.signOut() },
-            onLoadProfile = { uid -> viewModel.loadUserProfile(uid) }
-          )
-        }
+
+  // Trigger authentication only if biometric is available
+  LaunchedEffect(canAuthenticate) {
+    if (canAuthenticate == BiometricManager.BIOMETRIC_SUCCESS) {
+      viewModel.authenticate(context)
+    } else {
+      // Assume success if biometrics are not available
+      viewModel.skipAuthentication()
+    }
+  }
+
+  when {
+    isAuthenticated -> {
+      if (userData.value == null) {
+        LoginScreen(
+          onGoogleLoginClick = { viewModel.launchCredentialManager(activityContext) }
+        )
       } else {
-        BiometricAuthenticationScreen()
+        AuthenticatedProfileScreen(
+          userData = userData.value!!,
+          onSignOut = { viewModel.signOut() }
+        )
       }
     }
+    canAuthenticate == BiometricManager.BIOMETRIC_SUCCESS -> {
+      BiometricAuthenticationScreen()
+    }
+    else -> {
+      // Fallback: continue to login or show authenticated screen as appropriate
+      if (userData.value == null) {
+        LoginScreen(
+          onGoogleLoginClick = { viewModel.launchCredentialManager(activityContext) }
+        )
+      } else {
+        AuthenticatedProfileScreen(
+          userData = userData.value!!,
+          onSignOut = { viewModel.signOut() }
+        )
+      }
+    }
+  }
+}
 
-    BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE -> {
-      ErrorScreen("Este dispositivo no tiene características biométricas disponibles")
+
+@RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
+@Composable
+fun AuthenticatedProfileScreen(
+  userData: com.google.firebase.auth.FirebaseUser,
+  onSignOut: () -> Unit
+) {
+  val viewModel = hiltViewModel<ProfileViewModel>()
+  var uidInput by remember { mutableStateOf("") }
+
+  val profileData by viewModel.playerProfile.collectAsStateWithLifecycle()
+  val isLoadingProfile by viewModel.loading.collectAsStateWithLifecycle()
+
+  LazyColumn(
+    modifier = Modifier
+      .fillMaxSize()
+      .padding(ExtraLargePadding),
+    verticalArrangement = Arrangement.spacedBy(ExtraLargePadding)
+  ) {
+    item {
+      UserInfoCard(
+        userData = userData,
+        onSignOut = onSignOut
+      )
     }
 
-    BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE -> {
-      ErrorScreen("La autenticación biométrica no está disponible actualmente")
+    item {
+      UidInputCard(
+        uidInput = uidInput,
+        onUidChange = { uidInput = it },
+        onLoadProfile = {
+          if (uidInput.isNotBlank()) {
+            viewModel.getProfile(uidInput)
+          }
+        },
+        isLoading = isLoadingProfile
+      )
     }
 
-    BiometricManager.BIOMETRIC_ERROR_SECURITY_UPDATE_REQUIRED -> {
-      ErrorScreen("No puedes usar autenticación biométrica hasta actualizar los detalles de seguridad")
-    }
-
-    BiometricManager.BIOMETRIC_ERROR_UNSUPPORTED -> {
-      ErrorScreen("No puedes usar autenticación biométrica con esta versión de Android")
-    }
-
-    BiometricManager.BIOMETRIC_STATUS_UNKNOWN -> {
-      ErrorScreen("No se puede determinar si puedes usar autenticación biométrica")
-    }
-
-    BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED -> {
-      ErrorScreen("No puedes usar autenticación biométrica porque no tienes credenciales registradas")
+    if (profileData != null) {
+      item {
+        ProfileContent(profile = profileData!!)
+      }
     }
   }
 }

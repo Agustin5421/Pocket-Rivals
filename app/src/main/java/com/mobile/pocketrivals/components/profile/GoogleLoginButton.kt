@@ -19,9 +19,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
 import com.mobile.pocketrivals.R
+import com.mobile.pocketrivals.ui.theme.Dimensions
 
 @Composable
 fun GoogleLoginButton(
@@ -29,18 +30,21 @@ fun GoogleLoginButton(
     modifier: Modifier = Modifier
 ) {
     Button(
-        modifier = modifier.height(56.dp),
+        modifier = modifier.height(Dimensions.SearchBarHeight),
         onClick = onClick,
         colors = ButtonDefaults.buttonColors(
             containerColor = Color.White,
             contentColor = Color.Black
         ),
-        shape = RoundedCornerShape(12.dp),
-        border = BorderStroke(1.dp, Color.LightGray),
-        contentPadding = PaddingValues(horizontal = 24.dp, vertical = 16.dp),
+        shape = RoundedCornerShape(Dimensions.ButtonCorner),
+        border = BorderStroke(Dimensions.ButtonBorder, Color.LightGray),
+        contentPadding = PaddingValues(
+            horizontal = Dimensions.GoogleButtonPadding,
+            vertical = Dimensions.GoogleButtonPaddingVertical
+        ),
         elevation = ButtonDefaults.buttonElevation(
-            defaultElevation = 2.dp,
-            pressedElevation = 4.dp
+            defaultElevation = Dimensions.CardElevation,
+            pressedElevation = Dimensions.ButtonPressedElevation
         )
     ) {
         Row(
@@ -48,13 +52,13 @@ fun GoogleLoginButton(
             horizontalArrangement = Arrangement.Center
         ) {
             Image(
-                modifier = Modifier.size(24.dp),
-                painter = painterResource(R.drawable.knull_mock), // Reemplaza con el ícono de Google
+                modifier = Modifier.size(Dimensions.GoogleButtonIcon),
+                painter = painterResource(R.drawable.google_logo),
                 contentDescription = "Google"
             )
-            Spacer(modifier = Modifier.width(12.dp))
+            Spacer(modifier = Modifier.width(Dimensions.MediumSpacer))
             Text(
-                text = "Continuar con Google",
+                text = stringResource(R.string.continuar_con_google),
                 style = MaterialTheme.typography.bodyLarge,
                 fontWeight = FontWeight.Medium
             )

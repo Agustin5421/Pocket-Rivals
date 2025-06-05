@@ -9,7 +9,6 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import com.mobile.pocketrivals.data.Hero
 
-// TODO: preguntar si va el herodetail extraido o no
 @Composable
 fun HeroCardMap(heroes: List<Hero>, navController: NavController) {
   LazyVerticalGrid(columns = GridCells.Fixed(3), modifier = Modifier.fillMaxSize()) {

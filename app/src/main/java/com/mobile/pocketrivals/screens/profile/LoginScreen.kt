@@ -1,4 +1,4 @@
-package com.mobile.pocketrivals.components.profile
+package com.mobile.pocketrivals.screens.profile
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -8,19 +8,17 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.dp
-
+import com.mobile.pocketrivals.R
+import com.mobile.pocketrivals.components.profile.GoogleLoginButton
+import com.mobile.pocketrivals.ui.theme.Dimensions
 
 @Composable
 fun LoginScreen(onGoogleLoginClick: () -> Unit) {
@@ -31,35 +29,27 @@ fun LoginScreen(onGoogleLoginClick: () -> Unit) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
-            modifier = Modifier.padding(32.dp)
+            modifier = Modifier.padding(Dimensions.ExtraLargeSpacer)
         ) {
-            // Logo o título de la app
-            Icon(
-                imageVector = Icons.Default.Favorite, //TODO: replace with your app logo
-                contentDescription = "Marvel Rivals",
-                modifier = Modifier.size(80.dp),
-                tint = MaterialTheme.colorScheme.primary
-            )
-
-            Spacer(modifier = Modifier.height(24.dp))
+            Spacer(modifier = Modifier.height(Dimensions.GoogleLoginTopSpacer))
 
             Text(
                 text = "Marvel Rivals",
                 style = MaterialTheme.typography.headlineLarge,
                 fontWeight = FontWeight.Bold,
-                color = MaterialTheme.colorScheme.primary
+                color = MaterialTheme.colorScheme.tertiary
             )
 
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(Dimensions.SmallSpacer))
 
             Text(
-                text = "Accede a tu perfil de jugador",
+                text = stringResource(R.string.accede_a_tu_perfil_de_jugador),
                 style = MaterialTheme.typography.bodyLarge,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 textAlign = TextAlign.Center
             )
 
-            Spacer(modifier = Modifier.height(48.dp))
+            Spacer(modifier = Modifier.height(Dimensions.GoogleLoginBottomSpacer))
 
             GoogleLoginButton(
                 onClick = onGoogleLoginClick,

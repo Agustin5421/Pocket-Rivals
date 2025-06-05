@@ -19,8 +19,11 @@ import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential.Co
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.mobile.pocketrivals.R
+import com.mobile.pocketrivals.apiManager.ApiServiceImpl
+import com.mobile.pocketrivals.data.PlayerProfile
 import com.mobile.pocketrivals.security.BiometricAuthManager
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
@@ -32,7 +35,9 @@ const val TAG = "UserViewModel"
 @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
 @HiltViewModel
 class ProfileViewModel @Inject constructor(
-    private val biometricAuthManager: BiometricAuthManager
+    private val biometricAuthManager: BiometricAuthManager,
+    private val apiServiceImpl: ApiServiceImpl,
+    @ApplicationContext private val context: Context,
 ): ViewModel() {
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
 
@@ -41,6 +46,14 @@ class ProfileViewModel @Inject constructor(
 
     private var _isAuthenticated = MutableStateFlow(false)
     val isAuthenticated = _isAuthenticated.asStateFlow()
+
+    private val _playerProfile = MutableStateFlow<PlayerProfile?>(null)
+    val playerProfile = _playerProfile.asStateFlow()
+
+    private val _loading = MutableStateFlow(false)
+    val loading = _loading.asStateFlow()
+
+    private val _showRetry = MutableStateFlow(false)
 
     // Accept the Activity context here
     fun launchCredentialManager(activityContext: Context) {
@@ -138,6 +151,33 @@ class ProfileViewModel @Inject constructor(
             onFail = {
                 _isAuthenticated.value = false
                 Toast.makeText(context, "The authentication failed, try again", Toast.LENGTH_SHORT).show()
+            }
+        )
+    }
+
+    fun skipAuthentication() {
+        _isAuthenticated.value = true
+    }
+
+
+    fun getProfile(username: String) {
+        _loading.value = true
+
+
+        apiServiceImpl.getPlayerProfile(
+            username = username,
+            context = context,
+            onSuccess = { playerProfile ->
+                viewModelScope.launch {
+                    _playerProfile.emit(playerProfile)
+                    _showRetry.value = false
+                }
+            },
+            onFail = {
+                _showRetry.value = true
+            },
+            loadingFinished = {
+                _loading.value = false
             }
         )
     }

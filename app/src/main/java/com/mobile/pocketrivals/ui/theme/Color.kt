@@ -13,3 +13,6 @@ val LightBlack = Color(0xFF474554)
 val Gold = Color(0xFFF5BE59)
 val LightBlue = Color(0xFF9fc5e8)
 val SearchBarGray = Color(0xFFB0B0B0)
+
+val WinrateGreen = Color(0xFF4CAF50)
+val LossRed = Color(0xFFF44336)
