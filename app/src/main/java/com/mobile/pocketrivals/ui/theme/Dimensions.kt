@@ -67,4 +67,24 @@ object Dimensions {
 
   // Loader size
   val LoaderSize = 75.dp
+
+  val CardPadding = 16.dp             // Para .padding(16.dp)
+  val TitleBottomPadding = 12.dp      // Para .padding(bottom = 12.dp)
+  val RowSpacer = 16.dp               // Para Spacer(modifier = Modifier.width(16.dp))
+  val ButtonCorner = 12.dp        // Para RoundedCornerShape(12.dp)
+  val GoogleButtonIcon = 24.dp    // Para .size(24.dp)
+  val GoogleButtonPadding = 24.dp // Para contentPadding horizontal
+  val GoogleButtonPaddingVertical = 16.dp // Para contentPadding vertical
+  val ButtonBorder = 1.dp         // Para BorderStroke(1.dp, Color.LightGray)
+  val ButtonPressedElevation = 4.dp // Para ButtonDefaults.buttonElevation pressedElevation
+  val GoogleLoginTopSpacer = 24.dp    // Para Spacer(modifier = Modifier.height(24.dp))
+  val GoogleLoginBottomSpacer = 48.dp // Para Spacer(modifier = Modifier.height(48.dp))
+  val RankCardWidth = 160.dp   // Para Modifier.width(160.dp)
+  val RankIconSize = 32.dp     // Para Icon .size(32.dp)
+  val UidInputCardPadding = 20.dp        // Para .padding(20.dp)
+  val UidInputLoader = 20.dp             // Para .size(20.dp)
+  val UserInfoCardCorner = 16.dp     // Para RoundedCornerShape(16.dp)
+  val UserInfoCardPadding = 20.dp    // Para .padding(20.dp)
+  val UserInfoImage = 60.dp          // Para .size(60.dp)
+
 }

@@ -5,6 +5,7 @@ import android.widget.Toast
 import com.mobile.pocketrivals.R
 import com.mobile.pocketrivals.data.Hero
 import com.mobile.pocketrivals.data.PatchNotesResponse
+import com.mobile.pocketrivals.data.PlayerProfile
 import javax.inject.Inject
 import retrofit.Call
 import retrofit.Callback
@@ -13,7 +14,6 @@ import retrofit.Response
 import retrofit.Retrofit
 
 class ApiServiceImpl @Inject constructor() {
-
   fun getHeroes(
     context: Context,
     onSuccess: (List<Hero>) -> Unit,
@@ -85,6 +85,50 @@ class ApiServiceImpl @Inject constructor() {
               context.getString(R.string.can_t_get_patch_notes),
               Toast.LENGTH_SHORT
             )
+            .show()
+          onFail()
+          loadingFinished()
+        }
+      }
+    )
+  }
+
+
+  fun getPlayerProfile(
+    context: Context,
+    onSuccess: (PlayerProfile) -> Unit,
+    onFail: () -> Unit,
+    loadingFinished: () -> Unit,
+    username: String
+  ) {
+    val retrofit: Retrofit =
+      Retrofit.Builder()
+        .baseUrl(context.getString(R.string.rivals_api))
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+
+    val service: ApiService = retrofit.create(ApiService::class.java)
+    val call: Call<PlayerProfile> =
+      service.getPlayerStats(context.getString(R.string.api_key), username)
+
+    call.enqueue(
+      object : Callback<PlayerProfile> {
+        override fun onResponse(response: Response<PlayerProfile>?, retrofit: Retrofit?) {
+          loadingFinished()
+          if (response?.isSuccess == true) {
+            val playerProfile: PlayerProfile = response.body()
+            onSuccess(playerProfile)
+          } else {
+            onFailure(Exception(context.getString(R.string.bad_request)))
+          }
+        }
+
+        override fun onFailure(t: Throwable?) {
+          Toast.makeText(
+            context,
+            "can't get player profile: ${t?.message}",
+            Toast.LENGTH_SHORT
+          )
             .show()
           onFail()
           loadingFinished()

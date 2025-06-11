@@ -2,9 +2,11 @@ package com.mobile.pocketrivals.apiManager
 
 import com.mobile.pocketrivals.data.Hero
 import com.mobile.pocketrivals.data.PatchNotesResponse
+import com.mobile.pocketrivals.data.PlayerProfile
 import retrofit.Call
 import retrofit.http.GET
 import retrofit.http.Header
+import retrofit.http.Path
 import retrofit.http.Query
 
 interface ApiService {
@@ -16,4 +18,11 @@ interface ApiService {
     @Query("page") page: Int,
     @Query("limit") limit: Int
   ): Call<PatchNotesResponse>
+
+  @GET("player/{username}")
+  fun getPlayerStats(
+    @Header("x-api-key") apiKey: String,
+    @Path("username") username: String
+  ): Call<PlayerProfile>
+
 }

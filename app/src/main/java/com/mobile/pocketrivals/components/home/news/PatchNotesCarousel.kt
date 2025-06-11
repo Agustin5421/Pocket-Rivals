@@ -16,9 +16,7 @@ import com.mobile.pocketrivals.data.PatchNote
 import com.mobile.pocketrivals.ui.theme.Dimensions
 import kotlinx.coroutines.delay
 
-// TODO: should the interval be defined in another place?
-// TODO: this component currently only supports patch notes, but I would like to make it able to
-// support other types of news in the future
+
 @Composable
 fun PatchNotesCarousel(
   newsList: List<PatchNote>,

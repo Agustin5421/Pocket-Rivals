@@ -64,3 +64,84 @@ data class AdditionalFields(
   @SerializedName("Energy Cost") val energyCost: String?,
   @SerializedName("Special Effect") val specialEffect: String?
 )
+
+// Entities for Player
+data class PlayerProfile(
+  @SerializedName("uid") val uid: Long,
+  @SerializedName("name") val name: String,
+  @SerializedName("player") val player: Player,
+  @SerializedName("isPrivate") val isPrivate: Boolean,
+  @SerializedName("match_history") val matchHistory: List<MatchHistory> = emptyList(),
+  @SerializedName("rank_history") val rankHistory: List<RankHistory> = emptyList(),
+  @SerializedName("hero_matchups") val heroMatchups: List<HeroMatchup> = emptyList()
+)
+
+
+data class Player(
+  @SerializedName("uid") val uid: Long,
+  @SerializedName("level") val level: String,
+  @SerializedName("name") val name: String,
+  @SerializedName("icon") val icon: PlayerIcon,
+  @SerializedName("rank") val rank: PlayerRank,
+  @SerializedName("team") val team: PlayerTeam,
+  @SerializedName("info") val info: PlayerInfo
+)
+
+
+data class MatchHistory(
+  @SerializedName("match_id") val matchId: String,
+  @SerializedName("date") val date: String,
+  @SerializedName("result") val result: String,
+  @SerializedName("kills") val kills: Int,
+  @SerializedName("deaths") val deaths: Int,
+  @SerializedName("assists") val assists: Int
+)
+
+data class RankHistory(
+  @SerializedName("season") val season: Int,
+  @SerializedName("rank") val rank: String,
+  @SerializedName("points") val points: Int
+)
+
+data class HeroMatchup(
+  @SerializedName("hero_id") val heroId: Int,
+  @SerializedName("win_rate") val winRate: Float,
+  val heroName: String = "",
+  val heroImageUrl: String = ""
+)
+
+data class PlayerIcon(
+  @SerializedName("player_icon_id") val playerIconId: String,
+  @SerializedName("player_icon") val playerIcon: String
+)
+
+data class PlayerRank(
+  @SerializedName("rank") val rank: String,
+  @SerializedName("image") val image: String?,
+  @SerializedName("color") val color: String?
+)
+
+data class PlayerTeam(
+  @SerializedName("club_team_id") val clubTeamId: String,
+  @SerializedName("club_team_mini_name") val clubTeamMiniName: String,
+  @SerializedName("club_team_type") val clubTeamType: String
+)
+
+data class PlayerInfo(
+  @SerializedName("completed_achievements") val completedAchievements: String,
+  @SerializedName("login_os") val loginOs: String,
+  @SerializedName("rank_game_season") val rankGameSeason: Map<String, RankGameSeason>
+)
+
+data class RankGameSeason(
+  @SerializedName("rank_game_id") val rankGameId: Int,
+  @SerializedName("level") val level: Int,
+  @SerializedName("rank_score") val rankScore: Double,
+  @SerializedName("max_level") val maxLevel: Int,
+  @SerializedName("max_rank_score") val maxRankScore: Double,
+  @SerializedName("update_time") val updateTime: Long,
+  @SerializedName("win_count") val winCount: Int,
+  @SerializedName("protect_score") val protectScore: Int,
+  @SerializedName("diff_score") val diffScore: Double
+)
+

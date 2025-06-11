@@ -28,7 +28,7 @@ class NotificationManager @Inject constructor(
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
 
         // Get the selected time and schedule the notification
-        val time = 30000L
+        val time = 3000L
         alarmManager.setExactAndAllowWhileIdle(
             AlarmManager.RTC_WAKEUP,
             time,

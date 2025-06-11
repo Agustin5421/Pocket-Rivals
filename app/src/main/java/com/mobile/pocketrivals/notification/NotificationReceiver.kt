@@ -20,12 +20,13 @@ class NotificationReceiver : BroadcastReceiver() {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         }
 
+
         val pendingIntent: PendingIntent = PendingIntent.getActivity(context, 0, openAppIntent, PendingIntent.FLAG_IMMUTABLE)
         val notificationManager = context.getSystemService(NotificationManager::class.java)
         val notification = NotificationCompat.Builder(context, notificationChannelID)
-            .setContentTitle("Don't slack off now")
-            .setContentText("Remember to learn a little Android development today")
-            .setSmallIcon(R.drawable.knull_mock)
+            .setContentTitle(context.getString(R.string.ultron_has_arrived))
+            .setContentText(context.getString(R.string.check_out_the_latest_patch_notes))
+            .setSmallIcon(R.drawable.loki_svgrepo_com)
             .setPriority(NotificationManager.IMPORTANCE_HIGH)
             .setContentIntent(pendingIntent)
             .setAutoCancel(true)

@@ -49,18 +49,4 @@ constructor(
       loadingFinished = { _loading.value = false }
     )
   }
-
-  fun getNews(): List<PatchNote> {
-    return _patchNotes.value
-  }
-
-  fun getNewsById(id: String?): PatchNote {
-    for (patchNote in _patchNotes.value) {
-      if (patchNote.id == id) {
-        return patchNote
-      }
-    }
-    // TODO: Handle this case properly
-    throw IllegalArgumentException(context.getString(R.string.error))
-  }
 }
