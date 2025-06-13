@@ -2,8 +2,6 @@ package com.mobile.pocketrivals.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val Pink80 = Color(0xFFEFB8C8)
-
 // Moon knight color palette
 val White = Color(0xffffffff)
 val Black10 = Color(0xff303030)
@@ -16,3 +14,5 @@ val SearchBarGray = Color(0xFFB0B0B0)
 
 val WinrateGreen = Color(0xFF4CAF50)
 val LossRed = Color(0xFFF44336)
+
+val DarkThemeBackground = Color(0xFF4b4b4b)

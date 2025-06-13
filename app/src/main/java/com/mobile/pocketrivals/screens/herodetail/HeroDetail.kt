@@ -97,7 +97,7 @@ fun HeroDetailContent(hero: Hero) {
       Text(
         text = hero.bio,
         style = MaterialTheme.typography.bodyLarge,
-        color = MaterialTheme.colorScheme.secondary,
+        color = MaterialTheme.colorScheme.onPrimary,
         modifier = Modifier.padding(vertical = Dimensions.SmallPadding)
       )
     }
@@ -119,7 +119,7 @@ fun HeroDetailContent(hero: Hero) {
       Text(
         text = hero.lore,
         style = MaterialTheme.typography.bodyLarge,
-        color = MaterialTheme.colorScheme.secondary,
+        color = MaterialTheme.colorScheme.onPrimary,
         modifier = Modifier.padding(vertical = Dimensions.SmallPadding)
       )
     }

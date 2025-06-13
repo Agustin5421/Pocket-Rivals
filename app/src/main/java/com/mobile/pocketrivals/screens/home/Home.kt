@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
@@ -15,13 +16,14 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import com.mobile.pocketrivals.R
 import com.mobile.pocketrivals.components.home.news.PatchNotesCarousel
 import com.mobile.pocketrivals.components.home.tierlist.HeroStats
-import com.mobile.pocketrivals.components.home.tierlist.HeroTierList
 import com.mobile.pocketrivals.ui.theme.Dimensions
 
 @Composable
@@ -44,14 +46,24 @@ fun HomeScreen(navController: NavController) {
           Button(onClick = homeViewModel::retryApiCall) { Text(stringResource(R.string.retry)) }
         }
       } else {
+
         Column(
           modifier = Modifier.fillMaxSize(),
           verticalArrangement = Arrangement.Top,
-          horizontalAlignment = Alignment.CenterHorizontally
         ) {
+          Text(
+            text = stringResource(R.string.welcome_to_pocket_rivals),
+            color = MaterialTheme.colorScheme.onPrimary,
+            style = MaterialTheme.typography.headlineMedium,
+            modifier = Modifier
+              .padding(Dimensions.LargePadding)
+              .padding(top = Dimensions.ExtraLargePadding),
+            textAlign = TextAlign.Left,
+            fontWeight = FontWeight.Bold
+          )
           PatchNotesCarousel(patchNotes, navController = navController)
 
-          HeroTierList(modifier = Modifier, mockHeroStats)
+          //HeroTierList(modifier = Modifier, mockHeroStats)
         }
       }
     }

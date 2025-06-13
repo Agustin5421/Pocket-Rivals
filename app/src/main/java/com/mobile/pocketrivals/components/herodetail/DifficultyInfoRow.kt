@@ -36,7 +36,7 @@ fun DifficultyInfoRow(difficultyString: String) {
       text = stringResource(R.string.difficulty),
       fontSize = Dimensions.SmallFontSize,
       fontWeight = FontWeight.Bold,
-      color = MaterialTheme.colorScheme.secondary,
+      color = MaterialTheme.colorScheme.onPrimary,
       modifier = Modifier.width(Dimensions.InfoRowWidth)
     )
 
@@ -54,7 +54,7 @@ fun DifficultyInfoRow(difficultyString: String) {
         Icon(
           imageVector = Icons.Outlined.Star,
           contentDescription = null,
-          tint = MaterialTheme.colorScheme.secondary,
+          tint = MaterialTheme.colorScheme.onPrimary,
           modifier = Modifier.size(Dimensions.SmallIcon)
         )
       }

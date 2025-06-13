@@ -100,7 +100,7 @@ fun PatchNoteDetailContent(patchNote: PatchNote) {
       text = patchNote.title,
       style = MaterialTheme.typography.titleMedium,
       fontWeight = FontWeight.Bold,
-      color = MaterialTheme.colorScheme.secondary,
+      color = MaterialTheme.colorScheme.onPrimary,
       modifier =
         Modifier.padding(top = Dimensions.LargePadding).padding(bottom = Dimensions.MediumPadding)
     )
@@ -108,7 +108,7 @@ fun PatchNoteDetailContent(patchNote: PatchNote) {
     Text(
       text = stringResource(R.string.date, patchNote.date),
       fontSize = Dimensions.SmallFontSize,
-      color = MaterialTheme.colorScheme.onSurface,
+      color = MaterialTheme.colorScheme.onPrimary,
       modifier = Modifier.padding(bottom = Dimensions.MediumPadding)
     )
 
@@ -116,7 +116,7 @@ fun PatchNoteDetailContent(patchNote: PatchNote) {
       Text(
         text = patchNote.overview,
         fontSize = Dimensions.MediumFontSize,
-        color = MaterialTheme.colorScheme.onBackground,
+        color = MaterialTheme.colorScheme.onPrimary,
         modifier = Modifier.padding(bottom = Dimensions.MediumPadding)
       )
     }
@@ -127,7 +127,7 @@ fun PatchNoteDetailContent(patchNote: PatchNote) {
       Text(
         text = patchNote.fullContent,
         style = MaterialTheme.typography.bodyLarge,
-        color = MaterialTheme.colorScheme.onBackground,
+        color = MaterialTheme.colorScheme.onPrimary,
       )
     }
 

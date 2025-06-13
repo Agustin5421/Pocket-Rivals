@@ -61,7 +61,7 @@ fun HeroMainCard(hero: Hero) {
           text = hero.name.toTitleCase(),
           fontSize = Dimensions.LargeFontSize,
           fontWeight = FontWeight.Bold,
-          color = MaterialTheme.colorScheme.secondary
+          color = MaterialTheme.colorScheme.onPrimary
         )
         Spacer(modifier = Modifier.height(Dimensions.MediumSpacer))
 
@@ -78,7 +78,7 @@ fun HeroMainCard(hero: Hero) {
           Icon(
             painter = painterResource(iconResource),
             contentDescription = hero.role,
-            tint = MaterialTheme.colorScheme.secondary,
+            tint = MaterialTheme.colorScheme.onPrimary,
             modifier = Modifier.size(Dimensions.MediumIcon)
           )
 
@@ -86,13 +86,13 @@ fun HeroMainCard(hero: Hero) {
           Text(
             text = hero.role,
             fontSize = Dimensions.MediumFontSize,
-            color = MaterialTheme.colorScheme.secondary
+            color = MaterialTheme.colorScheme.onPrimary
           )
         }
         Text(
           text = stringResource(R.string.real_name, hero.realName),
           fontSize = Dimensions.SmallFontSize,
-          color = MaterialTheme.colorScheme.secondary
+          color = MaterialTheme.colorScheme.onPrimary
         )
       }
     }

@@ -41,7 +41,7 @@ fun MatchHistorySection(matchHistory: List<MatchHistory>) {
             style = MaterialTheme.typography.titleLarge,
             fontWeight = FontWeight.Bold,
             modifier = Modifier.padding(bottom = Dimensions.TitleBottomPadding),
-            color = MaterialTheme.colorScheme.secondary
+            color = MaterialTheme.colorScheme.onPrimary
         )
 
         matchHistory.take(5).forEach { match ->

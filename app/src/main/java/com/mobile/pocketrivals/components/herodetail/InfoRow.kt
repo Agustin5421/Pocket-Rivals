@@ -10,7 +10,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
-import com.mobile.pocketrivals.ui.theme.Black10
 import com.mobile.pocketrivals.ui.theme.Dimensions
 
 @Composable
@@ -23,9 +22,9 @@ fun InfoRow(label: String, value: String) {
       text = "$label:",
       fontSize = Dimensions.SmallFontSize,
       fontWeight = FontWeight.Bold,
-      color = MaterialTheme.colorScheme.secondary,
+      color = MaterialTheme.colorScheme.onPrimary,
       modifier = Modifier.width(Dimensions.InfoRowWidth)
     )
-    Text(text = value, fontSize = Dimensions.SmallFontSize, color = Black10)
+    Text(text = value, fontSize = Dimensions.SmallFontSize, color = MaterialTheme.colorScheme.onPrimary)
   }
 }
