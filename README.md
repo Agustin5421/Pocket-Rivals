@@ -40,38 +40,7 @@
 - **Almacenamiento**: DataStore para preferencias de usuario
 - **Imágenes**: Coil para carga y caché de imágenes
 
-## 🚀 Configuración del Proyecto
-
-### Prerrequisitos
-- Android Studio Arctic Fox o superior
-- JDK 11
-- Android SDK API 24 (mínimo) - API 35 (target)
-
-### Instalación
-1. Clona el repositorio:
-   ```bash
-   git clone https://github.com/Agustin5421/Pocket-Rivals.git
-   ```
-
-2. Abre el proyecto en Android Studio
-
-3. Configura Firebase:
-   - Agrega tu archivo `google-services.json` en la carpeta `app/`
-   - Configura la autenticación de Google en Firebase Console
-
-4. Compila y ejecuta:
-   ```bash
-   ./gradlew assembleDebug
-   ```
-
-## 📱 Pantallas Principales
-
-- **🏠 Inicio**: Carrusel de notas de parche y estadísticas de héroes
-- **🦸‍♂️ Héroes**: Lista searcheable de todos los héroes con detalles
-- **👤 Perfil**: Estadísticas personales y historial de partidas
-- **⚙️ Configuración**: Ajustes de la aplicación
-- **📋 Notas de Parche**: Últimas actualizaciones del juego
-
+   
 ## 🌐 API
 
 La aplicación consume datos de la **Marvel Rivals API** (https://marvelrivalsapi.com) para obtener:
@@ -84,5 +53,3 @@ La aplicación consume datos de la **Marvel Rivals API** (https://marvelrivalsap
 Este proyecto es una aplicación no oficial de compañía para Marvel Rivals. No está afiliada oficialmente con NetEase Games o Marvel.
 
 ---
-
-> **Nota**: Esta es una aplicación de fan creada para mejorar la experiencia de juego de Marvel Rivals. Todos los derechos de Marvel Rivals pertenecen a sus respectivos propietarios.
